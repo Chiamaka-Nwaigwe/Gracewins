@@ -4,23 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chiamaka Nwaigwe | Project Management Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --purple: #1a8a6e; --purple-light: #f0eff4; --purple-mid: #a8c5bc;
-    --teal: #1a8a6e; --teal-light: #e8f4f1; --teal-mid: #5DCAA5;
-    --coral: #D85A30; --coral-light: #FAECE7;
-    --gray-dark: #2C2C2A; --gray-mid: #5F5E5A; --gray-light: #f0eff4;
-    --white: #fff; --border: rgba(0,0,0,0.1);
+    --purple: #c05e3a; --purple-light: #faeee8; --purple-mid: #e8a88e;
+    --teal: #c05e3a; --teal-light: #faeee8; --teal-mid: #e8a88e;
+    --coral: #c05e3a; --coral-light: #faeee8;
+    --gray-dark: #2C2C2A; --gray-mid: #5F5E5A; --gray-light: #f5ede8;
+    --white: #fff8f5; --border: rgba(192,94,58,0.3);
   }
-  body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--gray-dark); background: #fafaf8; }
-  nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  body { font-family: 'Nunito', sans-serif; color: var(--gray-dark); background: #f5e8e2; }
+  nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; transition: background 0.4s, box-shadow 0.4s; }
+  nav.scrolled { background: #2e1f1a; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
+  nav.scrolled .nav-logo { color: #faeee8; }
+  nav.scrolled .nav-links a { color: rgba(255,255,255,0.55); }
+  nav.scrolled .nav-links a:hover { color: #e8a88e; }
+  nav.scrolled .nav-links a.active { color: #e8a88e; border-bottom: 2px solid #e8a88e; padding-bottom: 2px; }
   .nav-logo { font-size: 15px; font-weight: 600; color: var(--purple); letter-spacing: 0.5px; }
   .nav-links { display: flex; gap: 1.5rem; }
   .nav-links a { font-size: 13px; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--purple); }
-  .hero { background: linear-gradient(135deg, #1e2d40 0%, #162030 100%); color: white; padding: 5rem 2rem 4rem; text-align: center; }
-  .avatar { width: 88px; height: 88px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 600; color: white; margin: 0 auto 1.5rem; border: 3px solid rgba(255,255,255,0.4); }
+  .hero { background: linear-gradient(135deg, #2e1f1a 0%, #1e1410 100%); color: white; padding: 5rem 2rem 4rem; text-align: center; }
+  .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid rgba(255,255,255,0.4); }
   .hero h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
   .hero .title { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase; }
   .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
@@ -28,9 +34,11 @@
   .contact-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
   .contact-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.85); }
   section { padding: 3.5rem 2rem; max-width: 860px; margin: 0 auto; }
-  .section-label { font-size: 11px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
-  .section-title { font-size: 1.5rem; font-weight: 600; color: var(--gray-dark); margin-bottom: 2rem; }
-  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .section-label { font-size: 11px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; opacity: 0.35; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease, color 0.4s; }
+  .section-title { font-size: 1.5rem; font-weight: 600; color: var(--gray-dark); margin-bottom: 2rem; opacity: 0.35; transform: translateY(10px); transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s; }
+  section.in-view .section-label { opacity: 1; transform: translateY(0); color: #c05e3a; }
+  section.in-view .section-title { opacity: 1; transform: translateY(0); }
+  .divider { border: none; border-top: 1px solid rgba(192,94,58,0.3); margin: 0; }
   .summary-box { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: 1.5rem; font-size: 15px; line-height: 1.8; color: #3C3489; }
   .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
   .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
@@ -67,16 +75,36 @@
   .cert-item { display: flex; align-items: center; gap: 10px; background: var(--gray-light); border-radius: 8px; padding: 10px 14px; }
   .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); flex-shrink: 0; }
   .cert-name { font-size: 13px; color: var(--gray-dark); }
-  .contact-section { background: #1e2d40; color: white; padding: 3rem 2rem; text-align: center; }
+  .contact-section { background: #2e1f1a; color: white; padding: 3rem 2rem; text-align: center; }
   .contact-section h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
   .contact-section p { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
   .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   .contact-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
   .contact-btn:hover { background: rgba(255,255,255,0.25); }
-  footer { text-align: center; padding: 1.5rem; font-size: 12px; color: var(--gray-mid); border-top: 1px solid var(--border); background: #f9f8f5; }
+  footer { text-align: center; padding: 1.5rem; font-size: 12px; color: var(--gray-mid); border-top: 1px solid rgba(192,94,58,0.3); background: #f5e8e2; }
 </style>
 </head>
 <body>
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('scrolled', window.scrollY > 80);
+    const links = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section');
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    links.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+    });
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
 
 <nav>
   <div class="nav-logo">Chiamaka Nwaigwe</div>
@@ -90,7 +118,7 @@
 </nav>
 
 <div class="hero">
-  <div class="avatar">CN</div>
+  <img class="avatar" src="https://i.imgur.com/TFKUVdr.jpeg" alt="Chiamaka Ngozika Nwaigwe" onerror="this.outerHTML='<div style=\'width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:white;margin:0 auto 1.5rem;border:3px solid rgba(255,255,255,0.4)\'>CNN</div>'" />
   <h1>Chiamaka Ngozika Nwaigwe</h1>
   <div class="hero-tags">
     <span class="hero-tag">Healthcare IT</span>
@@ -112,7 +140,7 @@
   <div class="section-label">Professional Summary</div>
   <div class="section-title">About Me</div>
   <div class="summary-box">
-    Project Management professional grounded in informatics and healthcare technology, with experience leading full project lifecycles — from requirements gathering through implementation and validation — across healthcare IT and education sectors. Known for turning complex organisational requirements into structured, deliverable outcomes and bringing both analytical rigour and evidence-based thinking to every engagement.
+    Project Management professional grounded in informatics and healthcare technology, with experience leading full project lifecycles, from requirements gathering through implementation and validation, across healthcare IT and education sectors. Known for turning complex organisational requirements into structured, deliverable outcomes and bringing both analytical rigour and evidence-based thinking to every engagement.
   </div>
 </section>
 
@@ -175,7 +203,7 @@
     <div class="project-top">
       <div>
         <div class="project-title">HVALIDATE — Clinical Validation Dashboard</div>
-        <div class="project-org">Informatics Capstone | Northeastern University, Toronto</div>
+        <div class="project-org">Informatics Capstone</div>
       </div>
       <span class="project-badge">Healthcare IT</span>
     </div>
@@ -242,7 +270,7 @@
         <span class="exp-date">Nov 2025 – Present</span>
       </div>
       <div class="exp-company">Hamilton-Wentworth District School Board | Ontario, Canada</div>
-      <p class="exp-prose">Coordinating specialised educational programs for students with exceptional learning needs, I develop structured plans, manage timelines, and ensure activities run consistently against defined goals. Working closely with a team of educators and support specialists, ensuring all parties are well-informed and addressing issues decisively as they arise — tracking progress, documenting outcomes, and resolving challenges as they arise.</p>
+      <p class="exp-prose">Coordinating specialised educational programs for students with exceptional learning needs, I develop structured plans, manage timelines, and ensure activities run consistently against defined goals. Working closely with a team of educators and support specialists, ensuring all parties are well-informed and addressing issues decisively as they arise: tracking progress, documenting outcomes, and resolving challenges as they arise.</p>
     </div>
   </div>
 
@@ -257,7 +285,7 @@
         <span class="exp-date">Dec 2024 – Nov 2025</span>
       </div>
       <div class="exp-company">Sentient HR Services | Ontario, Canada</div>
-      <p class="exp-prose">Leading the full cycle of structured behavioural programs for individuals with Autism Spectrum Disorder — from initial planning through execution and outcome tracking — I worked alongside clinicians, educators, and families to ensure consistent, quality delivery. Process improvements, including visual support frameworks and structured routines, were introduced to strengthen program consistency. As needs evolved, approaches were adapted accordingly, keeping communication open across all parties and ensuring everyone stayed informed.</p>
+      <p class="exp-prose">Leading the full cycle of structured behavioural programs for individuals with Autism Spectrum Disorder, from initial planning through execution and outcome tracking, I worked alongside clinicians, educators, and families to ensure consistent, quality delivery. Process improvements, including visual support frameworks and structured routines, were introduced to strengthen program consistency. As needs evolved, approaches were adapted accordingly, keeping communication open across all parties and ensuring everyone stayed informed.</p>
     </div>
   </div>
 
@@ -268,7 +296,7 @@
     <div class="exp-body">
       <div class="exp-header">
         <span class="exp-role">Broadcast Presenter</span>
-        <span class="exp-date">Nigeria</span>
+        <span class="exp-date">January 2020 – October 2024</span>
       </div>
       <div class="exp-company">Radio Nigeria 103.5 FM</div>
       <p class="exp-prose">As a Broadcast Presenter at Radio Nigeria 103.5 FM, I planned and delivered live content to a wide regional audience, coordinating with production teams to meet tight deadlines while maintaining quality. Managing multiple deliverables at once, messaging was crafted for different audience groups, keeping the production process running smoothly from start to finish.</p>
@@ -294,8 +322,8 @@
     </div>
   </div>
   <div class="cert-list">
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Personal Support Worker (PSW) Certificate — Canada</span></div>
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Behavioural Management Systems (BMS) Training — 2024</span></div>
+    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Personal Support Worker (PSW) Certificate</span></div>
+    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Behavioural Management Systems (BMS) Training</span></div>
     <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Computer Applications Training Certificate</span></div>
     <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Equality & Diversity Training Certificate</span></div>
   </div>
