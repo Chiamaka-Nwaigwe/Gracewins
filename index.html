@@ -48,7 +48,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 
 /* HERO */
 .hero-section{min-height:100vh;display:flex;align-items:center;padding:clamp(5rem,12vw,7rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,4rem);background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(200,169,110,0.06) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(62,207,142,0.04) 0%,transparent 60%)}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 260px;gap:clamp(1rem,2vw,1.5rem);align-items:center}
+.hero-initials{font-size:clamp(1rem,2vw,1.6rem);font-style:normal;font-weight:700;letter-spacing:0.05em;background:linear-gradient(135deg,#f5d08a 0%,#c8a96e 40%,#8a6a2e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none;filter:drop-shadow(1px 1px 0px rgba(100,60,0,0.6)) drop-shadow(2px 2px 0px rgba(80,45,0,0.4)) drop-shadow(3px 3px 4px rgba(0,0,0,0.5))}
 .hero-tag{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
 .hero-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
 .hero-pill{font-size:var(--fs-xs);padding:0.25rem 0.7rem;border:0.5px solid var(--border2);border-radius:999px;color:var(--muted)}
@@ -237,6 +238,7 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
 <section class="hero-section" id="home">
   <div class="hero-inner">
     <div>
+      <h1 class="hero">Chiamaka <em>Nwaigwe.</em> <span class="hero-initials">(CNN)</span></h1>
       <p class="hero-tag">Project Management Professional</p>
       <div class="hero-pills">
         <span class="hero-pill">Project Delivery</span>
@@ -247,7 +249,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <span class="hero-pill">Change Management</span>
         <span class="hero-pill">Data Analytics</span>
       </div>
-      <h1 class="hero">Chiamaka <em>Nwaigwe.</em></h1>
       <p class="hero-intro">I turn the complexity behind organisational challenges into outcomes that are structured, measurable, and built to last.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work</a>
@@ -257,9 +258,8 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
       <a href="#about" class="scroll-hint">Scroll</a>
     </div>
     <div class="hero-right">
-      <div class="avatar-ring">CNN</div>
       <img class="hero-photo" src="https://i.imgur.com/TFKUVdr.jpeg" alt="Chiamaka Ngozika Nwaigwe" />
-      <span class="hero-card-badge"><span class="pulse"></span>Open to Opportunities · Hamilton, ON</span>
+      <span class="hero-card-badge"><span class="pulse"></span>Open to Opportunities · Canada</span>
     </div>
   </div>
 </section>
