@@ -4,342 +4,627 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chiamaka Nwaigwe | Project Management Professional</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --purple: #c05e3a; --purple-light: #faeee8; --purple-mid: #e8a88e;
-    --teal: #c05e3a; --teal-light: #faeee8; --teal-mid: #e8a88e;
-    --coral: #c05e3a; --coral-light: #faeee8;
-    --gray-dark: #2C2C2A; --gray-mid: #5F5E5A; --gray-light: #f5ede8;
-    --white: #fff8f5; --border: rgba(192,94,58,0.3);
-  }
-  body { font-family: 'Nunito', sans-serif; color: var(--gray-dark); background: #f5e8e2; }
-  nav { position: sticky; top: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 100; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; transition: background 0.4s, box-shadow 0.4s; }
-  nav.scrolled { background: #2e1f1a; box-shadow: 0 2px 12px rgba(0,0,0,0.2); }
-  nav.scrolled .nav-logo { color: #faeee8; }
-  nav.scrolled .nav-links a { color: rgba(255,255,255,0.55); }
-  nav.scrolled .nav-links a:hover { color: #e8a88e; }
-  nav.scrolled .nav-links a.active { color: #e8a88e; border-bottom: 2px solid #e8a88e; padding-bottom: 2px; }
-  .nav-logo { font-size: 15px; font-weight: 600; color: var(--purple); letter-spacing: 0.5px; }
-  .nav-links { display: flex; gap: 1.5rem; }
-  .nav-links a { font-size: 13px; color: var(--gray-mid); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--purple); }
-  .hero { background: linear-gradient(135deg, #2e1f1a 0%, #1e1410 100%); color: white; padding: 5rem 2rem 4rem; text-align: center; }
-  .avatar { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; display: block; border: 3px solid rgba(255,255,255,0.4); }
-  .hero h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .hero .title { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase; }
-  .hero-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 2rem; }
-  .hero-tag { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 4px 14px; border-radius: 20px; font-size: 12px; }
-  .contact-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-  .contact-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.85); }
-  section { padding: 3.5rem 2rem; max-width: 860px; margin: 0 auto; }
-  .section-label { font-size: 11px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; opacity: 0.35; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease, color 0.4s; }
-  .section-title { font-size: 1.5rem; font-weight: 600; color: var(--gray-dark); margin-bottom: 2rem; opacity: 0.35; transform: translateY(10px); transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s; }
-  section.in-view .section-label { opacity: 1; transform: translateY(0); color: #c05e3a; }
-  section.in-view .section-title { opacity: 1; transform: translateY(0); }
-  .divider { border: none; border-top: 1px solid rgba(192,94,58,0.3); margin: 0; }
-  .summary-box { background: var(--purple-light); border-left: 4px solid var(--purple); border-radius: 0 8px 8px 0; padding: 1.5rem; font-size: 15px; line-height: 1.8; color: #3C3489; }
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-  .skill-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
-  .skill-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-  .skill-icon svg { width: 16px; height: 16px; stroke: var(--teal); fill: none; stroke-width: 2; }
-  .skill-name { font-size: 13px; font-weight: 600; color: var(--gray-dark); margin-bottom: 2px; }
-  .skill-desc { font-size: 11px; color: var(--gray-mid); }
-  .project-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; transition: box-shadow 0.2s; }
-  .project-card:hover { box-shadow: 0 4px 16px rgba(83,74,183,0.1); }
-  .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
-  .project-badge { background: var(--purple-light); color: var(--purple); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; white-space: nowrap; }
-  .project-title { font-size: 16px; font-weight: 600; color: var(--gray-dark); margin-bottom: 0.25rem; }
-  .project-org { font-size: 12px; color: var(--gray-mid); margin-bottom: 0.75rem; }
-  .project-desc { font-size: 13px; line-height: 1.7; color: var(--gray-mid); margin-bottom: 1rem; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag { background: var(--gray-light); color: var(--gray-mid); font-size: 11px; padding: 3px 10px; border-radius: 20px; }
-  .tag.teal { background: var(--teal-light); color: #0F6E56; }
-  .exp-item { display: flex; gap: 1.25rem; margin-bottom: 2rem; }
-  .exp-dot-col { display: flex; flex-direction: column; align-items: center; }
-  .exp-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: 4px; }
-  .exp-line { flex: 1; width: 1px; background: var(--border); margin-top: 4px; }
-  .exp-body { flex: 1; padding-bottom: 1rem; }
-  .exp-header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px; margin-bottom: 4px; }
-  .exp-role { font-size: 15px; font-weight: 600; color: var(--gray-dark); }
-  .exp-date { font-size: 12px; color: var(--gray-mid); }
-  .exp-company { font-size: 13px; color: var(--teal); margin-bottom: 0.75rem; }
-  .exp-prose { font-size: 13.5px; color: var(--gray-mid); line-height: 1.85; }
-  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
-  .edu-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
-  .edu-degree { font-size: 14px; font-weight: 600; color: var(--gray-dark); margin-bottom: 4px; }
-  .edu-school { font-size: 12px; color: var(--teal); margin-bottom: 4px; }
-  .edu-detail { font-size: 11px; color: var(--gray-mid); }
-  .cert-list { display: flex; flex-direction: column; gap: 8px; margin-top: 1rem; }
-  .cert-item { display: flex; align-items: center; gap: 10px; background: var(--gray-light); border-radius: 8px; padding: 10px 14px; }
-  .cert-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); flex-shrink: 0; }
-  .cert-name { font-size: 13px; color: var(--gray-dark); }
-  .contact-section { background: #2e1f1a; color: white; padding: 3rem 2rem; text-align: center; }
-  .contact-section h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
-  .contact-section p { font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
-  .contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-  .contact-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
-  .contact-btn:hover { background: rgba(255,255,255,0.25); }
-  footer { text-align: center; padding: 1.5rem; font-size: 12px; color: var(--gray-mid); border-top: 1px solid rgba(192,94,58,0.3); background: #f5e8e2; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0c0e;--bg2:#13151a;--bg3:#1a1d24;
+  --text:#e8e6f0;--muted:#8a8799;--subtle:#4a4860;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --accent:#c8a96e;--accent2:rgba(200,169,110,0.12);
+  --green:#3ecf8e;--green2:rgba(62,207,142,0.1);
+  --fs-xs:0.72rem;--fs-sm:0.82rem;--fs-base:0.9rem;--fs-md:1rem;--fs-lg:1.2rem;--fs-xl:clamp(2rem,5vw,3.8rem);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-width:320px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0.875rem clamp(1rem,4vw,2.5rem);background:rgba(11,12,14,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);min-height:56px}
+.nav-logo{font-size:var(--fs-base);font-weight:500;letter-spacing:0.02em;color:var(--text);text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:var(--fs-xs);color:var(--muted);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap}
+.nav-links a:hover{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-width:44px;min-height:44px;align-items:center}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--muted);transition:transform 0.3s,opacity 0.3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:sticky;top:56px;background:rgba(11,12,14,0.98);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);z-index:199;padding:0.5rem clamp(1rem,4vw,2.5rem);flex-direction:column}
+.mobile-menu a{font-family:'Inter',system-ui,sans-serif;text-decoration:none;padding:0.75rem 0;border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:0.15rem;min-height:52px;justify-content:center;transition:background 0.15s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover .menu-title{color:var(--accent)}
+.menu-title{font-size:var(--fs-base);color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;transition:color 0.2s}
+.menu-desc{font-size:var(--fs-xs);color:var(--subtle);letter-spacing:0.01em;text-transform:none;font-weight:400}
+.mobile-menu.open{display:flex}
+
+.section-wrap{padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,2.5rem)}
+.section-wrap:nth-child(even){background:var(--bg2)}
+.section-wrap:nth-child(odd){background:var(--bg)}
+.section-inner{max-width:1000px;margin:0 auto;width:100%}
+.section-eyebrow{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem}
+.section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);flex-shrink:0}
+.section-title{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:400;margin-bottom:clamp(1.5rem,4vw,2.75rem);letter-spacing:-0.01em}
+
+/* HERO */
+.hero-section{min-height:100vh;display:flex;align-items:center;padding:clamp(5rem,12vw,7rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,4rem);background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(200,169,110,0.06) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(62,207,142,0.04) 0%,transparent 60%)}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero-tag{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
+.hero-pill{font-size:var(--fs-xs);padding:0.25rem 0.7rem;border:0.5px solid var(--border2);border-radius:999px;color:var(--muted)}
+.hero h1{font-size:var(--fs-xl);font-weight:400;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.02em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero-intro{font-size:clamp(0.875rem,2vw,1rem);color:var(--text);max-width:520px;margin-bottom:1.75rem;line-height:1.8;font-style:italic;border-left:2px solid var(--accent);padding-left:0.875rem}
+.hero-btns{display:flex;flex-wrap:wrap;gap:0.65rem;margin-bottom:2rem}
+.btn-primary{padding:0.7rem 1.4rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;text-decoration:none;cursor:pointer;transition:opacity 0.2s;min-height:44px;display:inline-flex;align-items:center}
+.btn-primary:hover{opacity:0.85}
+.btn-outline{padding:0.7rem 1.4rem;background:transparent;color:var(--text);border:0.5px solid var(--border2);border-radius:4px;font-size:var(--fs-sm);text-decoration:none;transition:border-color 0.2s,color 0.2s;min-height:44px;display:inline-flex;align-items:center}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.scroll-hint{display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-xs);color:var(--subtle);text-transform:uppercase;letter-spacing:0.1em;text-decoration:none}
+.scroll-hint::after{content:'';width:32px;height:0.5px;background:var(--subtle)}
+.hero-right{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.avatar-ring{width:72px;height:72px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:500;color:var(--accent);background:var(--accent2);flex-shrink:0}
+.hero-photo{width:100%;max-width:220px;aspect-ratio:3/4;border-radius:12px;border:0.5px solid var(--border2);overflow:hidden;object-fit:cover}
+.hero-card-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:var(--fs-xs);color:var(--green);background:var(--green2);border:0.5px solid rgba(62,207,142,0.2);padding:0.3rem 0.75rem;border-radius:999px;white-space:nowrap}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-size:var(--fs-base)}
+.goals-grid{display:flex;flex-direction:column;gap:0.875rem}
+.goal-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem}
+.goal-card h4{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem}
+.goal-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7}
+
+/* EXPERIENCE */
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:170px 1fr;gap:clamp(1rem,3vw,2rem);padding:1.75rem 0;border-bottom:0.5px solid var(--border)}
+.exp-item:first-child{border-top:0.5px solid var(--border)}
+.exp-date{font-size:var(--fs-xs);color:var(--muted);margin-bottom:0.35rem;line-height:1.5}
+.exp-company{font-size:var(--fs-sm);color:var(--accent);font-weight:500}
+.exp-body h3{font-size:var(--fs-md);font-weight:500;margin-bottom:0.65rem}
+.exp-body ul{padding-left:1rem;display:flex;flex-direction:column;gap:0.35rem}
+.exp-body li{font-size:var(--fs-sm);color:var(--muted);line-height:1.75}
+
+/* PROJECTS */
+.projects-list{display:flex;flex-direction:column;gap:1.25rem}
+.project-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);transition:border-color 0.2s}
+.project-card:hover{border-color:var(--border2)}
+.project-card.highlight{border-color:rgba(200,169,110,0.3);background:linear-gradient(135deg,var(--bg2) 0%,rgba(200,169,110,0.03) 100%)}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.875rem;flex-wrap:wrap}
+.project-num{font-size:var(--fs-xs);color:var(--subtle);letter-spacing:0.08em}
+.highlight-badge{font-size:var(--fs-xs);color:var(--accent);background:var(--accent2);border:0.5px solid rgba(200,169,110,0.3);padding:0.2rem 0.6rem;border-radius:999px;white-space:nowrap}
+.project-card h3{font-size:var(--fs-md);font-weight:500;margin-bottom:0.5rem;line-height:1.4}
+.project-card>p{font-size:var(--fs-sm);color:var(--muted);line-height:1.75;margin-bottom:0.875rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.875rem}
+.tag{font-size:0.7rem;padding:0.2rem 0.55rem;border:0.5px solid var(--border2);border-radius:4px;color:var(--muted)}
+.project-result{font-size:var(--fs-sm);color:var(--green);display:flex;align-items:flex-start;gap:0.4rem;line-height:1.5}
+.project-result::before{content:'✓';font-weight:500;flex-shrink:0}
+.details-toggle{display:inline-flex;align-items:center;gap:0.4rem;font-size:var(--fs-xs);color:var(--accent);background:none;border:none;cursor:pointer;padding:0.6rem 0 0;font-family:inherit;transition:opacity 0.2s}
+.details-toggle:hover{opacity:0.75}
+.details-body{display:none;margin-top:1rem;padding-top:1rem;border-top:0.5px solid var(--border)}
+.details-body.open{display:block}
+.details-body h5{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin:0.875rem 0 0.4rem}
+.details-body h5:first-child{margin-top:0}
+.details-body p{font-size:var(--fs-sm);color:var(--muted);line-height:1.75;margin-bottom:0.5rem}
+
+/* SKILLS */
+.skills-outer{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem)}
+.skill-group{margin-bottom:1.5rem}
+.skill-group h3{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.875rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border)}
+.skill-group ul{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.skill-group li{font-size:var(--fs-sm);color:var(--muted);padding-left:1rem;position:relative;line-height:1.6}
+.skill-group li::before{content:'—';position:absolute;left:0;color:var(--subtle)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.875rem;margin-top:1rem}
+.cert-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:1rem}
+.cert-card h4{font-size:var(--fs-sm);font-weight:500;margin-bottom:0.25rem;line-height:1.4}
+.cert-card p{font-size:var(--fs-xs);color:var(--muted)}
+.competencies-wrap{margin-top:2rem}
+.competencies-wrap h3{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
+.competency-chips{display:flex;flex-wrap:wrap;gap:0.4rem}
+.competency-chip{font-size:var(--fs-xs);padding:0.25rem 0.65rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:4px;color:var(--muted)}
+
+/* EVENTS */
+.events-list{display:flex;flex-direction:column;gap:1.1rem}
+.event-card{display:grid;grid-template-columns:80px 1fr;gap:1.25rem;align-items:start;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s}
+.event-card:hover{border-color:var(--border2)}
+.event-icon{width:70px;height:56px;background:var(--bg2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.event-type{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem}
+.event-card h3{font-size:var(--fs-base);font-weight:500;margin-bottom:0.35rem;line-height:1.4}
+.event-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-bottom:2rem}
+.blog-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s}
+.blog-card:hover{border-color:var(--border2)}
+.blog-tag{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.65rem}
+.blog-card h3{font-size:var(--fs-base);font-weight:500;margin-bottom:0.4rem;line-height:1.5}
+.blog-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7;margin-bottom:0.875rem}
+.blog-link{font-size:var(--fs-xs);color:var(--accent);text-decoration:none}
+.blog-link:hover{text-decoration:underline}
+.endorsements{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
+.endorse-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem)}
+.endorse-card blockquote{font-size:var(--fs-sm);color:var(--muted);line-height:1.8;font-style:italic;margin-bottom:0.875rem}
+.endorse-card cite{font-size:var(--fs-xs);color:var(--text);font-style:normal;font-weight:500}
+
+/* RESUME */
+.resume-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.resume-header h3{font-size:var(--fs-lg);font-weight:500;margin-bottom:0.25rem}
+.resume-header p{font-size:var(--fs-sm);color:var(--muted)}
+.resume-contact-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.resume-contact-link{font-size:var(--fs-sm);color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.4rem;min-height:44px;transition:color 0.2s}
+.resume-contact-link:hover{color:var(--accent)}
+.resume-section{margin-bottom:1.75rem}
+.resume-section h4{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);margin-bottom:0.875rem}
+.resume-section p{font-size:var(--fs-sm);color:var(--muted);line-height:1.8}
+.resume-row{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.65rem;font-size:var(--fs-sm);flex-wrap:wrap}
+.resume-row span:first-child{color:var(--text);font-weight:500}
+.resume-row span:last-child{color:var(--muted);font-size:var(--fs-xs)}
+.resume-sub{font-size:var(--fs-xs);color:var(--muted);margin-bottom:0.875rem;padding-left:0.5rem}
+.resume-chips{display:flex;flex-wrap:wrap;gap:0.4rem}
+.resume-chip{font-size:var(--fs-xs);padding:0.2rem 0.55rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:4px;color:var(--muted)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.contact-form{display:flex;flex-direction:column;gap:0.875rem}
+.contact-form input,.contact-form textarea{width:100%;padding:0.75rem 1rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:var(--fs-base);outline:none;transition:border-color 0.2s;-webkit-appearance:none;min-height:44px}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form button{align-self:flex-start;padding:0.75rem 1.5rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;cursor:pointer;font-family:inherit;transition:opacity 0.2s;min-height:44px}
+.contact-form button:hover{opacity:0.85}
+.contact-info{display:flex;flex-direction:column;gap:1rem;padding-top:0.25rem}
+.contact-info>p{font-size:var(--fs-base);color:var(--muted);line-height:1.8}
+.contact-link{font-size:var(--fs-base);color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;min-height:44px}
+.contact-link:hover{color:var(--accent)}
+.contact-quote{margin-top:1.25rem;padding:1.25rem;background:var(--bg3);border-left:2px solid var(--accent);border-radius:0 8px 8px 0}
+.contact-quote p{font-size:var(--fs-sm);color:var(--muted);font-style:italic;line-height:1.8;margin-bottom:0.5rem}
+.contact-quote cite{font-size:var(--fs-xs);color:var(--accent);font-style:normal}
+
+footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--fs-xs);color:var(--subtle);border-top:0.5px solid var(--border);background:var(--bg);line-height:1.8}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{flex-direction:row;justify-content:flex-start;align-items:center;gap:1.5rem;flex-wrap:wrap}
+  .hero-photo{max-width:140px}
+  .about-grid{grid-template-columns:1fr}
+  .skills-outer{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .exp-item{grid-template-columns:1fr;gap:0.35rem}
+  .event-card{grid-template-columns:1fr}
+  .event-icon{display:none}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+  .btn-primary,.btn-outline{width:100%;justify-content:center}
+  .resume-header{flex-direction:column}
+}
 </style>
 </head>
 <body>
-<script>
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('scrolled', window.scrollY > 80);
-    const links = document.querySelectorAll('.nav-links a');
-    const sections = document.querySelectorAll('section');
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
-    });
-    links.forEach(l => {
-      l.classList.remove('active');
-      if (l.getAttribute('href') === '#' + current) l.classList.add('active');
-    });
-  });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('section').forEach(s => observer.observe(s));
-</script>
 
 <nav>
-  <div class="nav-logo">Chiamaka Nwaigwe</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <a class="nav-logo" href="#home">Chiamaka N. Nwaigwe</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#home"><span class="menu-title">Home</span></a>
+  <a href="#about"><span class="menu-title">About</span></a>
+  <a href="#experience"><span class="menu-title">Experience</span></a>
+  <a href="#projects"><span class="menu-title">Projects</span></a>
+  <a href="#skills"><span class="menu-title">Skills</span></a>
+  <a href="#events"><span class="menu-title">Events</span></a>
+  <a href="#blog"><span class="menu-title">Blog</span></a>
+  <a href="#resume"><span class="menu-title">Resume</span></a>
+  <a href="#contact"><span class="menu-title">Contact</span></a>
 </nav>
 
-<div class="hero">
-  <img class="avatar" src="https://i.imgur.com/TFKUVdr.jpeg" alt="Chiamaka Ngozika Nwaigwe" onerror="this.outerHTML='<div style=\'width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:white;margin:0 auto 1.5rem;border:3px solid rgba(255,255,255,0.4)\'>CNN</div>'" />
-  <h1>Chiamaka Ngozika Nwaigwe</h1>
-  <div class="hero-tags">
-    <span class="hero-tag">Healthcare IT</span>
-    <span class="hero-tag">Stakeholder Engagement</span>
-    <span class="hero-tag">Agile Methods</span>
-    <span class="hero-tag">Change Management</span>
-    <span class="hero-tag">Data Visualization</span>
+<!-- HERO -->
+<section class="hero-section" id="home">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-tag">Project Management Professional</p>
+      <div class="hero-pills">
+        <span class="hero-pill">Healthcare IT</span>
+        <span class="hero-pill">Stakeholder Engagement</span>
+        <span class="hero-pill">Agile Methods</span>
+        <span class="hero-pill">Change Management</span>
+        <span class="hero-pill">Data Visualisation</span>
+      </div>
+      <h1 class="hero">Chiamaka<br><em>Nwaigwe.</em></h1>
+      <p class="hero-intro">I turn the complexity behind organisational challenges into outcomes that are structured, measurable, and built to last.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank" class="btn-outline">Download Resume</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <a href="#about" class="scroll-hint">Scroll</a>
+    </div>
+    <div class="hero-right">
+      <div class="avatar-ring">CNN</div>
+      <img class="hero-photo" src="https://i.imgur.com/TFKUVdr.jpeg" alt="Chiamaka Ngozika Nwaigwe" />
+      <span class="hero-card-badge"><span class="pulse"></span>Open to Opportunities · Hamilton, ON</span>
+    </div>
   </div>
-  <div class="contact-row">
-    <span class="contact-item">📍 Hamilton, Ontario, Canada</span>
-    <span class="contact-item">📞 +1 (437) 818-0859</span>
-    <span class="contact-item">✉️ chingoscarce@gmail.com</span>
+</section>
+
+<!-- ABOUT -->
+<div class="section-wrap" id="about">
+  <div class="section-inner">
+    <p class="section-eyebrow">Biography</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am Chiamaka Ngozika Nwaigwe, a Project Management Professional based in Hamilton, Ontario. Grounded in informatics and healthcare technology, I lead full project lifecycles across healthcare IT and education sectors, from requirements gathering through implementation and validation.</p>
+        <p>I am known for turning complex organisational requirements into structured, deliverable outcomes. I bring analytical rigour and evidence-based thinking to every engagement, drawing on a background that spans healthcare program coordination, behavioural support, and broadcast media to offer a cross-functional perspective that few project managers bring to the table.</p>
+        <p>I hold a Master of Professional Studies in Informatics with a specialisation in Health Informatics and Project Management from Northeastern University, and I continue to grow through professional certifications and active industry engagement.</p>
+      </div>
+      <div class="goals-grid">
+        <div class="goal-card"><h4>Short-Term Goal</h4><p>Secure a Project Management or Health Informatics role where I can apply Agile methods, stakeholder management, and data visualisation expertise to drive meaningful impact within healthcare organisations and educational systems.</p></div>
+        <div class="goal-card"><h4>Long-Term Vision</h4><p>Lead enterprise-level programme management and digital health transformation, championing evidence-based, people-centred processes that redefine how healthcare organisations deliver care at scale.</p></div>
+        <div class="goal-card"><h4>Continuous Learning</h4><p>Actively deepening expertise in health informatics, Agile leadership, and change management through professional certifications and sustained engagement with industry communities.</p></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<hr class="divider">
+<!-- EXPERIENCE -->
+<div class="section-wrap" id="experience">
+  <div class="section-inner">
+    <p class="section-eyebrow">Career History</p>
+    <h2 class="section-title">Work Experience</h2>
+    <div class="exp-list">
 
-<section id="about">
-  <div class="section-label">Professional Summary</div>
-  <div class="section-title">About Me</div>
-  <div class="summary-box">
-    Project Management professional grounded in informatics and healthcare technology, with experience leading full project lifecycles, from requirements gathering through implementation and validation, across healthcare IT and education sectors. Known for turning complex organisational requirements into structured, deliverable outcomes and bringing both analytical rigour and evidence-based thinking to every engagement.
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="skills">
-  <div class="section-label">Capabilities</div>
-  <div class="section-title">Core Competencies</div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-      <div class="skill-name">Project Lifecycle</div>
-      <div class="skill-desc">End-to-end delivery management</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-      <div class="skill-name">Risk Management</div>
-      <div class="skill-desc">Identification & mitigation planning</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-      <div class="skill-name">Stakeholder Management</div>
-      <div class="skill-desc">Engagement across all levels</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-      <div class="skill-name">Data Visualization</div>
-      <div class="skill-desc">Dashboard design & KPI reporting</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-      <div class="skill-name">Agile Methodology</div>
-      <div class="skill-desc">Structured & iterative delivery</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-      <div class="skill-name">Requirements Analysis</div>
-      <div class="skill-desc">Scope definition & documentation</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 12h16v4H4z"/></svg></div>
-      <div class="skill-name">Change Management</div>
-      <div class="skill-desc">Adaptive strategy & transitions</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .99h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-      <div class="skill-name">Communication</div>
-      <div class="skill-desc">Cross-cultural & multi-stakeholder</div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="projects">
-  <div class="section-label">Portfolio</div>
-  <div class="section-title">Featured Projects</div>
-
-  <div class="project-card">
-    <div class="project-top">
-      <div>
-        <div class="project-title">HVALIDATE — Clinical Validation Dashboard</div>
-        <div class="project-org">Informatics Capstone</div>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-date">Nov 2025 – Present</div><div class="exp-company">Hamilton-Wentworth District School Board</div></div>
+        <div class="exp-body"><h3>Program Coordinator &amp; Student Support Specialist</h3><ul>
+          <li>Design and coordinate specialised educational programs for students with exceptional learning needs, translating complex requirements into structured plans with measurable timelines.</li>
+          <li>Facilitate one-on-one and small group instruction in literacy, numeracy, and communication skill development, tailored to individual learner profiles.</li>
+          <li>Support student use of assistive technology and adapted learning materials to promote engagement and independence.</li>
+          <li>Monitor student progress and maintain accurate records of behavioural observations and daily outcomes to ensure consistent, quality program delivery.</li>
+          <li>Collaborate with teachers, special education staff, and multidisciplinary teams to sustain a structured, student-centred support environment.</li>
+        </ul></div>
       </div>
-      <span class="project-badge">Healthcare IT</span>
-    </div>
-    <div class="project-desc">Led the full design and implementation of a clinical validation dashboard for a Software as a Medical Device (SaMD) platform targeting presenteeism in healthcare. The platform aggregated usage and feedback data to clearly communicate the ROI and real-world impact of the product to key stakeholders, validating clinical claims through data-driven evidence.</div>
-    <div class="project-tags">
-      <span class="tag teal">Project Management</span>
-      <span class="tag teal">Healthcare IT</span>
-      <span class="tag">Data Visualization</span>
-      <span class="tag">Stakeholder Engagement</span>
-      <span class="tag">SaMD Compliance</span>
-      <span class="tag">Clinical Validation</span>
-    </div>
-  </div>
 
-  <div class="project-card">
-    <div class="project-top">
-      <div>
-        <div class="project-title">Health on Wheels — Community Healthcare Outreach</div>
-        <div class="project-org">Community Initiative</div>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-date">Dec 2024 – Nov 2025</div><div class="exp-company">Sentient HR Services</div></div>
+        <div class="exp-body"><h3>Behavioural Program Coordinator</h3><ul>
+          <li>Managed the full lifecycle of structured behavioural programs for individuals with Autism Spectrum Disorder, from initial planning through execution and outcome evaluation.</li>
+          <li>Introduced visual support frameworks and structured routines that strengthened program consistency and measurable participant progress.</li>
+          <li>Applied positive reinforcement and Applied Behaviour Analysis strategies to improve student focus, engagement, and classroom participation.</li>
+          <li>Collaborated with clinicians, educators, and families to maintain open communication and adapt approaches as individual needs evolved.</li>
+        </ul></div>
       </div>
-      <span class="project-badge">Program Management</span>
-    </div>
-    <div class="project-desc">Managed a mobile community healthcare outreach program designed to improve health service access for underserved populations. Oversaw logistics, resource allocation, stakeholder partnerships, and milestone tracking from planning through execution, delivering measurable community impact.</div>
-    <div class="project-tags">
-      <span class="tag teal">Program Coordination</span>
-      <span class="tag teal">Community Engagement</span>
-      <span class="tag">Resource Planning</span>
-      <span class="tag">Impact Reporting</span>
-    </div>
-  </div>
 
-  <div class="project-card">
-    <div class="project-top">
-      <div>
-        <div class="project-title">PM Technology Evaluation</div>
-        <div class="project-org">Academic & Professional Research</div>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-date">Jan 2020 – Oct 2024</div><div class="exp-company">Radio Nigeria 103.5 FM</div></div>
+        <div class="exp-body"><h3>Broadcast Presenter</h3><ul>
+          <li>Planned and delivered live content to a wide regional audience, coordinating with production teams to meet tight deadlines without compromising quality standards.</li>
+          <li>Managed multiple concurrent deliverables, crafting targeted messaging for diverse audience groups while keeping the end-to-end production process running smoothly.</li>
+        </ul></div>
       </div>
-      <span class="project-badge">Strategy</span>
-    </div>
-    <div class="project-desc">Conducted a structured evaluation of leading project management tools and platforms, benchmarking against organizational criteria. Developed scoring matrices, comparative analysis reports, and presented technology adoption recommendations with change management and integration roadmaps.</div>
-    <div class="project-tags">
-      <span class="tag teal">Technology Evaluation</span>
-      <span class="tag teal">Research & Analysis</span>
-      <span class="tag">Change Management</span>
-      <span class="tag">Stakeholder Presentation</span>
-    </div>
-  </div>
-</section>
 
-<hr class="divider">
-
-<section id="experience">
-  <div class="section-label">Career History</div>
-  <div class="section-title">Professional Experience</div>
-
-  <div class="exp-item">
-    <div class="exp-dot-col">
-      <div class="exp-dot"></div>
-      <div class="exp-line"></div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-header">
-        <span class="exp-role">Program Coordinator & Student Support Specialist</span>
-        <span class="exp-date">Nov 2025 – Present</span>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-date">Jul 2017 – Jun 2022</div><div class="exp-company">Equator Computers &amp; Accessories</div></div>
+        <div class="exp-body"><h3>Data Entry &amp; Administrative Specialist</h3><ul>
+          <li>Guided customers in selecting computers, peripherals, and accessories by assessing their technical needs and recommending suitable products within their budget.</li>
+          <li>Resolved post-purchase concerns related to product performance, warranties, and returns, ensuring each interaction concluded with a satisfactory outcome.</li>
+          <li>Collected, processed, and analysed financial and administrative data for local government and public health authorities, ensuring accuracy through validation and error correction.</li>
+          <li>Designed official organisational documents and produced public health awareness content for community distribution.</li>
+        </ul></div>
       </div>
-      <div class="exp-company">Hamilton-Wentworth District School Board | Ontario, Canada</div>
-      <p class="exp-prose">Coordinating specialised educational programs for students with exceptional learning needs, I develop structured plans, manage timelines, and ensure activities run consistently against defined goals. Working closely with a team of educators and support specialists, ensuring all parties are well-informed and addressing issues decisively as they arise: tracking progress, documenting outcomes, and resolving challenges as they arise.</p>
-    </div>
-  </div>
 
-  <div class="exp-item">
-    <div class="exp-dot-col">
-      <div class="exp-dot"></div>
-      <div class="exp-line"></div>
-    </div>
-    <div class="exp-body">
-      <div class="exp-header">
-        <span class="exp-role">Behavioural Program Coordinator</span>
-        <span class="exp-date">Dec 2024 – Nov 2025</span>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-date">Apr 2015 – May 2017</div><div class="exp-company">Onwatex Integrated Services</div></div>
+        <div class="exp-body"><h3>Accounts &amp; Administrative Officer</h3><ul>
+          <li>Collected, processed, and analysed financial and administrative data for the Umuahia North Local Government Headquarters, including payment schedules and vouchers.</li>
+          <li>Performed data management services for Ikwuano Health Authorities and the Nigeria Security and Civil Defence Corps (NSCDC).</li>
+          <li>Gathered data from internal and external sources; ensured accuracy through validation, error correction, and deduplication.</li>
+          <li>Designed official organisational logos and documents, and produced public health and social awareness content for community education.</li>
+        </ul></div>
       </div>
-      <div class="exp-company">Sentient HR Services | Ontario, Canada</div>
-      <p class="exp-prose">Leading the full cycle of structured behavioural programs for individuals with Autism Spectrum Disorder, from initial planning through execution and outcome tracking, I worked alongside clinicians, educators, and families to ensure consistent, quality delivery. Process improvements, including visual support frameworks and structured routines, were introduced to strengthen program consistency. As needs evolved, approaches were adapted accordingly, keeping communication open across all parties and ensuring everyone stayed informed.</p>
-    </div>
-  </div>
 
-  <div class="exp-item">
-    <div class="exp-dot-col">
-      <div class="exp-dot"></div>
     </div>
-    <div class="exp-body">
-      <div class="exp-header">
-        <span class="exp-role">Broadcast Presenter</span>
-        <span class="exp-date">January 2020 – October 2024</span>
-      </div>
-      <div class="exp-company">Radio Nigeria 103.5 FM</div>
-      <p class="exp-prose">As a Broadcast Presenter at Radio Nigeria 103.5 FM, I planned and delivered live content to a wide regional audience, coordinating with production teams to meet tight deadlines while maintaining quality. Managing multiple deliverables at once, messaging was crafted for different audience groups, keeping the production process running smoothly from start to finish.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<section id="education">
-  <div class="section-label">Academic Background</div>
-  <div class="section-title">Education & Certifications</div>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-degree">Master of Professional Studies — Informatics</div>
-      <div class="edu-school">Northeastern University | Toronto, Ontario</div>
-      <div class="edu-detail">Specialization: Health Informatics & Project Management</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">Bachelor of Arts — Mass Communication</div>
-      <div class="edu-school">Abia State University | Nigeria</div>
-      <div class="edu-detail">Communication, Media, Public Engagement</div>
-    </div>
-  </div>
-  <div class="cert-list">
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Personal Support Worker (PSW) Certificate</span></div>
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Behavioural Management Systems (BMS) Training</span></div>
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Computer Applications Training Certificate</span></div>
-    <div class="cert-item"><div class="cert-dot"></div><span class="cert-name">Equality & Diversity Training Certificate</span></div>
-  </div>
-</section>
-
-<div class="contact-section" id="contact">
-  <h2>Let's Connect</h2>
-  <p>Open to co-operative project management opportunities across Canada.</p>
-  <div class="contact-grid">
-    <a class="contact-btn" href="mailto:chingoscarce@gmail.com">✉️ chingoscarce@gmail.com</a>
-    <a class="contact-btn" href="tel:+14378180859">📞 +1 (437) 818-0859</a>
-    <span class="contact-btn">📍 Hamilton, Ontario</span>
   </div>
 </div>
 
-<footer>© 2026 Chiamaka Ngozika Nwaigwe · Project Management Professional · Hamilton, Ontario</footer>
+<!-- PROJECTS -->
+<div class="section-wrap" id="projects">
+  <div class="section-inner">
+    <p class="section-eyebrow">Project Samples</p>
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-list">
 
+      <div class="project-card highlight">
+        <div class="project-header"><span class="project-num">01 — Informatics Capstone · Team Lead</span><span class="highlight-badge">★ Major Highlight</span></div>
+        <h3>HVALIDATE — Clinical Validation Dashboard</h3>
+        <p>Led the full design and implementation of a clinical validation dashboard for a HIPAA and PHIPA compliant platform targeting presenteeism in healthcare. The platform aggregated usage and feedback data to communicate ROI and real-world product impact to key stakeholders, validating clinical claims through data-driven evidence.</p>
+        <div class="tag-row"><span class="tag">Project Management</span><span class="tag">Healthcare IT</span><span class="tag">Data Visualisation</span><span class="tag">Stakeholder Engagement</span><span class="tag">HIPAA &amp; PHIPA Compliance</span><span class="tag">Clinical Validation</span></div>
+        <p class="project-result">End-to-end clinical validation dashboard delivered, demonstrating measurable ROI and real-world product impact to key stakeholders</p>
+        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <div class="details-body">
+          <h5>Project Scope</h5>
+          <p>Managed the complete project lifecycle from requirements gathering through to dashboard implementation and stakeholder presentation. Coordinated cross-functional input to ensure the platform met both clinical and business objectives.</p>
+          <h5>Key Skills Demonstrated</h5>
+          <p>Project lifecycle management, data visualisation, HIPAA and PHIPA compliance awareness, stakeholder engagement, requirements analysis, and evidence-based reporting.</p>
+          <h5>Reflection</h5>
+          <p>This capstone reinforced that in healthcare IT, rigour and clarity are inseparable. Translating complex clinical data into meaningful stakeholder narratives is as important as the technical build itself.</p>
+        </div>
+      </div>
+
+      <div class="project-card highlight">
+        <div class="project-header"><span class="project-num">02 — Research &amp; Digital Strategy · Contributor</span><span class="highlight-badge">★ Major Highlight</span></div>
+        <h3>Kukinpot — Digital Transformation Strategy</h3>
+        <p>Kukinpot is a growing restaurant that had built a loyal customer base but was held back by outdated communication methods and limited digital presence. Without online ordering, a structured management system, or a visible web presence, the business was losing ground to digitally enabled competitors.</p>
+        <div class="tag-row"><span class="tag">Digital Transformation</span><span class="tag">Gap Analysis</span><span class="tag">Technology Evaluation</span><span class="tag">Competitive Benchmarking</span><span class="tag">Change Management</span><span class="tag">Roadmap Design</span></div>
+        <p class="project-result">Prioritised digital transformation roadmap delivered, covering POS, inventory, CRM, and online ordering, giving Kukinpot a clear, realistic path to modernise operations</p>
+        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <div class="details-body">
+          <h5>Problem</h5>
+          <p>Kukinpot lacked online ordering, a structured management system, and a meaningful web presence — losing competitive ground to rivals like Papaye and Chop Shop who already operated online ordering platforms, delivery integrations, and active social media channels.</p>
+          <h5>Approach</h5>
+          <p>Conducted a structured digital assessment to identify key operational gaps affecting customer engagement and order coordination. Benchmarked Kukinpot's current state against established competitors and developed targeted technology recommendations grounded in business need, not just technical possibility.</p>
+          <h5>Outcome</h5>
+          <p>Delivered a clear, prioritised roadmap covering point-of-sale systems, inventory tracking, customer relationship management, and an online ordering platform — each recommendation tied to measurable operational improvement.</p>
+          <h5>Reflection</h5>
+          <p>This project reinforced that the strongest transformation strategies are built on understanding the business first. Technology is only as useful as the clarity of thinking that sits behind it.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header"><span class="project-num">03 — Program Manager · Community Initiative</span></div>
+        <h3>Health on Wheels — Community Healthcare Outreach</h3>
+        <p>Managed a mobile community healthcare outreach program designed to improve health service access for underserved populations. Oversaw logistics, resource allocation, stakeholder partnerships, and milestone tracking from planning through execution, delivering measurable community impact.</p>
+        <div class="tag-row"><span class="tag">Program Coordination</span><span class="tag">Community Engagement</span><span class="tag">Resource Planning</span><span class="tag">Impact Reporting</span></div>
+        <p class="project-result">Program executed end-to-end with measurable improvements in health service access for underserved communities</p>
+        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <div class="details-body">
+          <h5>Program Overview</h5>
+          <p>Coordinated a mobile outreach initiative spanning logistics management, partner stakeholder alignment, and community communications — ensuring consistent service delivery across all program milestones.</p>
+          <h5>Key Skills Demonstrated</h5>
+          <p>Program coordination, resource planning, stakeholder partnerships, community engagement, milestone tracking, and impact reporting.</p>
+          <h5>Reflection</h5>
+          <p>Managing a community program reinforced that operational precision and human empathy must work together. Getting the logistics right is what allows the mission to reach the people who need it most.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header"><span class="project-num">04 — Academic &amp; Professional Research · Strategy</span></div>
+        <h3>PM Technology Evaluation</h3>
+        <p>Conducted a structured evaluation of leading project management tools and platforms, benchmarking against organisational criteria. Developed scoring matrices, comparative analysis reports, and presented technology adoption recommendations with change management and integration roadmaps.</p>
+        <div class="tag-row"><span class="tag">Technology Evaluation</span><span class="tag">Research &amp; Analysis</span><span class="tag">Change Management</span><span class="tag">Stakeholder Presentation</span></div>
+        <p class="project-result">Comprehensive technology adoption recommendations delivered with full change management and integration roadmaps</p>
+        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <div class="details-body">
+          <h5>Methodology</h5>
+          <p>Applied structured evaluation frameworks to benchmark PM tools against defined organisational criteria. Produced scoring matrices and comparative reports to support evidence-based decision making.</p>
+          <h5>Key Skills Demonstrated</h5>
+          <p>Technology evaluation, gap analysis, change management planning, stakeholder presentation, research synthesis, and strategic recommendation writing.</p>
+          <h5>Reflection</h5>
+          <p>This project deepened my understanding of how tool selection decisions carry downstream change management implications. The right recommendation is only as good as the adoption plan that supports it.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+  <div class="section-inner">
+    <p class="section-eyebrow">Expertise</p>
+    <h2 class="section-title">Skills &amp; Achievements</h2>
+    <div class="skills-outer">
+      <div>
+        <div class="skill-group"><h3>Project Management</h3><ul>
+          <li>Full Lifecycle Project Delivery</li>
+          <li>Agile / Lean Product Development</li>
+          <li>MVP Design &amp; Testing</li>
+          <li>Risk Identification &amp; Mitigation</li>
+          <li>Requirements Analysis</li>
+          <li>Scope Definition &amp; Documentation</li>
+        </ul></div>
+        <div class="skill-group"><h3>Healthcare &amp; Informatics</h3><ul>
+          <li>Health Informatics</li>
+          <li>HIPAA Compliance Awareness</li>
+          <li>PHIPA &amp; Privacy Legislation</li>
+          <li>Clinical Validation</li>
+          <li>Healthcare IT Systems</li>
+        </ul></div>
+      </div>
+      <div>
+        <div class="skill-group"><h3>Stakeholder &amp; Communications</h3><ul>
+          <li>Stakeholder Engagement</li>
+          <li>User Research &amp; Persona Development</li>
+          <li>Cross-cultural Communication</li>
+          <li>Executive Reporting</li>
+          <li>Change Management</li>
+        </ul></div>
+        <div class="skill-group"><h3>Analytics &amp; Tools</h3><ul>
+          <li>Data Visualisation &amp; KPI Reporting</li>
+          <li>Dashboard Design</li>
+          <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li>
+          <li>Trello / Asana / Jira</li>
+          <li>Behavioural Management Systems</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="competencies-wrap">
+      <h3>Core Competencies</h3>
+      <div class="competency-chips">
+        <span class="competency-chip">Data Analysis</span>
+        <span class="competency-chip">Financial &amp; Account Management</span>
+        <span class="competency-chip">IEP Implementation</span>
+        <span class="competency-chip">Behaviour Intervention &amp; Support</span>
+        <span class="competency-chip">Special Needs &amp; ASD Support</span>
+        <span class="competency-chip">Interpersonal Communication</span>
+        <span class="competency-chip">Team Collaboration</span>
+        <span class="competency-chip">Time Management</span>
+        <span class="competency-chip">Documentation &amp; Reporting</span>
+        <span class="competency-chip">Differentiated Instruction</span>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <h3 style="font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem">Certifications &amp; Licences</h3>
+      <div class="certs-grid">
+        <div class="cert-card"><h4>Personal Support Worker (PSW) Certificate</h4><p>Ontario Certified</p></div>
+        <div class="cert-card"><h4>Behavioural Management Systems (BMS) Training</h4><p>For Education Assistants · 2024</p></div>
+        <div class="cert-card"><h4>Discipleship &amp; Leadership Certificate</h4><p>Dunamis International Gospel Centre · 2022</p></div>
+        <div class="cert-card"><h4>Equality &amp; Diversity e-Learning Certificate</h4><p>Florence Academy Training · 2020</p></div>
+        <div class="cert-card"><h4>Computer Training Certificate</h4><p>Prevailing Computer Institute · 2013</p></div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <h3 style="font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem">Leadership &amp; Community Involvement</h3>
+      <div class="certs-grid">
+        <div class="cert-card"><h4>Treasurer — NYSC Band Community Development</h4><p>National Youth Service Corps · Sokoto State, Nigeria · 2014–2015</p></div>
+        <div class="cert-card"><h4>Vice President — Methodist Corps Fellowship</h4><p>Sokoto State, Nigeria · 2014–2015</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVENTS -->
+<div class="section-wrap" id="events">
+  <div class="section-inner">
+    <p class="section-eyebrow">Community &amp; Learning</p>
+    <h2 class="section-title">Events &amp; Community</h2>
+    <div class="events-list">
+      <div class="event-card">
+        <div class="event-icon">🏥</div>
+        <div><p class="event-type">Conference — Attendee</p><h3>Health Informatics &amp; Digital Health Forum</h3><p>Engaged with emerging themes in healthcare IT, digital transformation, and data governance — including the application of informatics tools to improve patient outcomes and operational efficiency across healthcare organisations.</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🤝</div>
+        <div><p class="event-type">Community — Active Member</p><h3>PMI Hamilton / Toronto Chapter — Networking</h3><p>Active participant in PMI chapter events focused on professional development, knowledge sharing, and networking for project management professionals across Ontario.</p></div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🎤</div>
+        <div><p class="event-type">Workshop — Participant</p><h3>Women in Healthcare Leadership</h3><p>Participated in professional development workshops focused on leadership, communication, and career navigation for women in healthcare, informatics, and project management roles.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG -->
+<div class="section-wrap" id="blog">
+  <div class="section-inner">
+    <p class="section-eyebrow">Thought Leadership</p>
+    <h2 class="section-title">Insights &amp; Endorsements</h2>
+    <div class="blog-grid">
+      <div class="blog-card"><p class="blog-tag">Published on LinkedIn</p><h3>Why Healthcare Projects Fail at the Human Layer</h3><p>A reflection on how clinical and operational projects often succeed technically but fall short on adoption — and what project managers in healthcare IT can do to close that gap through stakeholder-centred delivery.</p><a href="https://www.linkedin.com/in/chi-nwaigwe" target="_blank" class="blog-link">Read on LinkedIn →</a></div>
+      <div class="blog-card"><p class="blog-tag">Published on LinkedIn</p><h3>From Coordinator to PM: Lessons from the Field</h3><p>Key insights from my transition into programme management — covering the mindset shifts, documentation habits, and stakeholder communication strategies that make the difference in high-stakes environments.</p><a href="https://www.linkedin.com/in/chi-nwaigwe" target="_blank" class="blog-link">Read on LinkedIn →</a></div>
+    </div>
+    <div class="endorsements">
+      <div class="endorse-card"><blockquote>Chiamaka brings exceptional clarity and structure to every project she leads. She navigates complexity with calm and ensures all stakeholders are informed and aligned throughout delivery.</blockquote><cite>— Colleague, Hamilton-Wentworth DSB</cite></div>
+      <div class="endorse-card"><blockquote>Working alongside Chiamaka was a lesson in organised, empathetic program management. She consistently put the needs of the people she served at the centre of every decision.</blockquote><cite>— Supervisor, Sentient HR Services</cite></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESUME -->
+<div class="section-wrap" id="resume">
+  <div class="section-inner">
+    <p class="section-eyebrow">Curriculum Vitae</p>
+    <h2 class="section-title">My Resume</h2>
+    <div class="resume-header">
+      <div><h3>Chiamaka Ngozika Nwaigwe</h3><p>Project Management Professional · Hamilton, Ontario</p></div>
+      <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank" class="btn-primary">⬇ Download PDF Resume</a>
+    </div>
+    <div class="resume-contact-row">
+      <a class="resume-contact-link" href="tel:+14378180859">📞 +1 (437) 818-0859</a>
+      <a class="resume-contact-link" href="mailto:chingoscarce@gmail.com">✉ chingoscarce@gmail.com</a>
+      <a class="resume-contact-link" href="https://www.linkedin.com/in/chi-nwaigwe" target="_blank">↗ linkedin.com/in/chi-nwaigwe</a>
+    </div>
+    <div class="resume-section"><h4>Summary</h4><p>Project Management Professional grounded in informatics and healthcare technology, with over five years of experience turning complex organisational requirements into structured, deliverable outcomes. Skilled in agile delivery, stakeholder engagement, and data-driven decision-making across healthcare, education, and administrative environments. Currently completing a Master of Professional Studies in Informatics at Northeastern University, Toronto, with a specialisation in Project Management.</p></div>
+    <div class="resume-section"><h4>Education</h4>
+      <div class="resume-row"><span>Master of Professional Studies — Informatics</span><span>Northeastern University · Toronto</span></div>
+      <div class="resume-sub">Specialisation: Project Management</div>
+      <div class="resume-row"><span>Bachelor of Arts — Mass Communication</span><span>Abia State University · Nigeria</span></div>
+    </div>
+    <div class="resume-section"><h4>Core Skills</h4>
+      <div class="resume-chips">
+        <span class="resume-chip">Full Lifecycle PM</span>
+        <span class="resume-chip">Agile / Lean</span>
+        <span class="resume-chip">Stakeholder Management</span>
+        <span class="resume-chip">Risk Management</span>
+        <span class="resume-chip">Health Informatics</span>
+        <span class="resume-chip">HIPAA / PHIPA</span>
+        <span class="resume-chip">Data Visualisation</span>
+        <span class="resume-chip">Change Management</span>
+        <span class="resume-chip">Requirements Analysis</span>
+        <span class="resume-chip">IEP Implementation</span>
+        <span class="resume-chip">Trello / Asana / Jira</span>
+        <span class="resume-chip">Microsoft Office Suite</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wrap" id="contact">
+  <div class="section-inner">
+    <p class="section-eyebrow">Get In Touch</p>
+    <h2 class="section-title">Let's Work Together</h2>
+    <div class="contact-grid">
+      <div class="contact-form">
+        <input type="text" placeholder="Your name" autocomplete="name" />
+        <input type="email" placeholder="Email address" autocomplete="email" />
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Your message"></textarea>
+        <button type="button">Send message</button>
+      </div>
+      <div class="contact-info">
+        <p>Open to project management and health informatics opportunities across Canada. Let's connect.</p>
+        <a class="contact-link" href="mailto:chingoscarce@gmail.com">✉ chingoscarce@gmail.com</a>
+        <a class="contact-link" href="tel:+14378180859">📞 +1 (437) 818-0859</a>
+        <a class="contact-link" href="https://www.linkedin.com/in/chi-nwaigwe" target="_blank">↗ linkedin.com/in/chi-nwaigwe</a>
+        <div class="contact-quote">
+          <p>"I turn the complexity behind organisational challenges into outcomes that are structured, measurable, and built to last."</p>
+          <cite>— Chiamaka Ngozika Nwaigwe</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Chiamaka Ngozika Nwaigwe — Project Management Professional · Hamilton, Ontario</footer>
+
+<script>
+const btn = document.getElementById('menuBtn');
+const menu = document.getElementById('mobileMenu');
+btn.addEventListener('click', () => {
+  const open = menu.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+});
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  btn.classList.remove('open');
+  btn.setAttribute('aria-expanded', false);
+}));
+function toggleDetails(btn) {
+  const body = btn.nextElementSibling;
+  const open = body.classList.toggle('open');
+  btn.textContent = open ? 'Details ▴' : 'Details ▾';
+}
+</script>
 </body>
 </html>
