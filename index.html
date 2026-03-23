@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chiamaka Nwaigwe | Project Management Professional</title>
+<title>Chiamaka Nwaigwe | Informatics Professional</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -13,32 +13,71 @@
   --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
   --accent:#c8a96e;--accent2:rgba(200,169,110,0.12);
   --green:#3ecf8e;--green2:rgba(62,207,142,0.1);
-  --fs-xs:0.72rem;--fs-sm:0.82rem;--fs-base:0.9rem;--fs-md:1rem;--fs-lg:1.2rem;--fs-xl:clamp(2rem,5vw,3.8rem);
+  --nav-bg:rgba(11,12,14,0.92);
+  --fs-xs:0.72rem;--fs-sm:0.82rem;--fs-base:0.9rem;--fs-md:1rem;--fs-lg:1.2rem;--fs-xl:clamp(2.6rem,6vw,4.4rem);
 }
+/* LIGHT THEME */
+body.theme-light{
+  --bg:#f5f5f0;--bg2:#eeede8;--bg3:#e5e4de;
+  --text:#1a1a1a;--muted:#555550;--subtle:#999990;
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
+  --nav-bg:rgba(245,245,240,0.95);
+}
+/* MIDNIGHT THEME */
+body.theme-midnight{
+  --bg:#0a0f1e;--bg2:#0f1629;--bg3:#151d35;
+  --text:#dde4f0;--muted:#7a8aaa;--subtle:#3a4a6a;
+  --border:rgba(100,150,255,0.07);--border2:rgba(100,150,255,0.15);
+  --nav-bg:rgba(10,15,30,0.95);
+}
+/* FOREST THEME */
+body.theme-forest{
+  --bg:#0a120e;--bg2:#0f1a14;--bg3:#15231a;
+  --text:#d5e8da;--muted:#7a9a82;--subtle:#3a5a42;
+  --border:rgba(100,200,120,0.07);--border2:rgba(100,200,120,0.15);
+  --nav-bg:rgba(10,18,14,0.95);
+}
+
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-width:320px}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-width:320px;transition:background 0.3s,color 0.3s}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
 
-nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0.875rem clamp(1rem,4vw,2.5rem);background:rgba(11,12,14,0.92);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);min-height:56px}
+/* NAV */
+nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0.875rem clamp(1rem,4vw,2.5rem);background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);min-height:56px;gap:1rem}
 .nav-logo{font-size:var(--fs-base);font-weight:500;letter-spacing:0.02em;color:var(--text);text-decoration:none;white-space:nowrap}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links{display:flex;gap:1.5rem;list-style:none;flex:1}
 .nav-links a{font-size:var(--fs-xs);color:var(--muted);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:0.5rem}
+
+/* THEME SWITCHER */
+.theme-wrap{position:relative}
+.theme-btn{background:none;border:0.5px solid var(--border2);border-radius:6px;padding:0.35rem 0.55rem;cursor:pointer;font-size:0.9rem;color:var(--muted);transition:border-color 0.2s,color 0.2s;min-height:36px;display:flex;align-items:center;gap:0.3rem}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent)}
+.theme-label{font-size:var(--fs-xs);font-family:'Inter',sans-serif;letter-spacing:0.04em}
+.theme-panel{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;padding:0.5rem;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4);min-width:160px}
+.theme-panel.open{display:block}
+.theme-option{display:flex;align-items:center;gap:0.6rem;width:100%;padding:0.5rem 0.75rem;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:var(--fs-sm);color:var(--muted);border-radius:4px;transition:background 0.15s,color 0.15s;text-align:left}
+.theme-option:hover{background:var(--bg2);color:var(--accent)}
+.theme-option.active{color:var(--accent)}
+.swatch{width:12px;height:12px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(255,255,255,0.2)}
+
+/* HAMBURGER */
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-width:44px;min-height:44px;align-items:center}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--muted);transition:transform 0.3s,opacity 0.3s}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:sticky;top:56px;background:rgba(11,12,14,0.98);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);z-index:199;padding:0.5rem clamp(1rem,4vw,2.5rem);flex-direction:column}
-.mobile-menu a{font-family:'Inter',system-ui,sans-serif;text-decoration:none;padding:0.75rem 0;border-bottom:0.5px solid var(--border);display:flex;flex-direction:column;gap:0.15rem;min-height:52px;justify-content:center;transition:background 0.15s}
+.mobile-menu{display:none;position:sticky;top:56px;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);z-index:199;padding:0.5rem clamp(1rem,4vw,2.5rem);flex-direction:column}
+.mobile-menu a{font-family:'Inter',system-ui,sans-serif;text-decoration:none;padding:0.75rem 0;border-bottom:0.5px solid var(--border);display:flex;min-height:52px;align-items:center;transition:color 0.2s}
 .mobile-menu a:last-child{border-bottom:none}
 .mobile-menu a:hover .menu-title{color:var(--accent)}
 .menu-title{font-size:var(--fs-base);color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;transition:color 0.2s}
-.menu-desc{font-size:var(--fs-xs);color:var(--subtle);letter-spacing:0.01em;text-transform:none;font-weight:400}
 .mobile-menu.open{display:flex}
 
-.section-wrap{padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,2.5rem)}
+/* LAYOUT */
+.section-wrap{padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,2.5rem);transition:background 0.3s}
 .section-wrap:nth-child(even){background:var(--bg2)}
 .section-wrap:nth-child(odd){background:var(--bg)}
 .section-inner{max-width:1000px;margin:0 auto;width:100%}
@@ -49,22 +88,27 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 /* HERO */
 .hero-section{min-height:100vh;display:flex;align-items:center;padding:clamp(5rem,12vw,7rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,4rem);background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(200,169,110,0.06) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(62,207,142,0.04) 0%,transparent 60%)}
 .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 260px;gap:clamp(1rem,2vw,1.5rem);align-items:center}
-.hero-initials{font-size:clamp(1rem,2vw,1.6rem);font-style:normal;font-weight:700;letter-spacing:0.05em;background:linear-gradient(135deg,#f5d08a 0%,#c8a96e 40%,#8a6a2e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none;filter:drop-shadow(1px 1px 0px rgba(100,60,0,0.6)) drop-shadow(2px 2px 0px rgba(80,45,0,0.4)) drop-shadow(3px 3px 4px rgba(0,0,0,0.5))}
 .hero-tag{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
 .hero-pills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.25rem}
 .hero-pill{font-size:var(--fs-xs);padding:0.25rem 0.7rem;border:0.5px solid var(--border2);border-radius:999px;color:var(--muted)}
-.hero h1{font-size:var(--fs-xl);font-weight:400;line-height:1.1;margin-bottom:1rem;letter-spacing:-0.02em}
+.hero h1{font-size:var(--fs-xl);font-weight:400;line-height:1.1;margin-bottom:0.5rem;letter-spacing:-0.02em}
 .hero h1 em{font-style:italic;color:var(--accent)}
+.hero-initials{font-size:clamp(1rem,2vw,1.6rem);font-style:normal;font-weight:700;letter-spacing:0.05em;background:linear-gradient(135deg,#f5d08a 0%,#c8a96e 40%,#8a6a2e 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(1px 1px 0px rgba(100,60,0,0.6)) drop-shadow(2px 2px 0px rgba(80,45,0,0.4)) drop-shadow(3px 3px 4px rgba(0,0,0,0.5))}
 .hero-intro{font-size:clamp(0.875rem,2vw,1rem);color:var(--text);max-width:520px;margin-bottom:1.75rem;line-height:1.8;font-style:italic;border-left:2px solid var(--accent);padding-left:0.875rem}
 .hero-btns{display:flex;flex-wrap:wrap;gap:0.65rem;margin-bottom:2rem}
-.btn-primary{padding:0.7rem 1.4rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;text-decoration:none;cursor:pointer;transition:opacity 0.2s;min-height:44px;display:inline-flex;align-items:center}
+.btn-primary{padding:0.7rem 1.4rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;text-decoration:none;cursor:pointer;transition:opacity 0.2s;min-height:44px;display:inline-flex;align-items:center;font-family:'Inter',system-ui,sans-serif}
 .btn-primary:hover{opacity:0.85}
-.btn-outline{padding:0.7rem 1.4rem;background:transparent;color:var(--text);border:0.5px solid var(--border2);border-radius:4px;font-size:var(--fs-sm);text-decoration:none;transition:border-color 0.2s,color 0.2s;min-height:44px;display:inline-flex;align-items:center}
+.btn-outline{padding:0.7rem 1.4rem;background:transparent;color:var(--text);border:0.5px solid var(--border2);border-radius:4px;font-size:var(--fs-sm);text-decoration:none;transition:border-color 0.2s,color 0.2s;min-height:44px;display:inline-flex;align-items:center;font-family:'Inter',system-ui,sans-serif;cursor:pointer}
 .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.resume-btn-wrap{position:relative;display:inline-flex}
+.resume-dropdown{display:none;position:absolute;top:calc(100% + 6px);left:0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:6px;min-width:200px;z-index:100;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.resume-dropdown.open{display:block}
+.resume-dropdown a,.resume-dropdown button{display:flex;align-items:center;gap:0.5rem;width:100%;padding:0.7rem 1rem;font-size:var(--fs-sm);color:var(--muted);text-decoration:none;background:none;border:none;cursor:pointer;font-family:'Inter',system-ui,sans-serif;transition:background 0.15s,color 0.15s;text-align:left}
+.resume-dropdown a:hover,.resume-dropdown button:hover{background:var(--bg2);color:var(--accent)}
+.resume-dropdown a+a,.resume-dropdown a+button,.resume-dropdown button+a,.resume-dropdown button+button{border-top:0.5px solid var(--border)}
 .scroll-hint{display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-xs);color:var(--subtle);text-transform:uppercase;letter-spacing:0.1em;text-decoration:none}
 .scroll-hint::after{content:'';width:32px;height:0.5px;background:var(--subtle)}
 .hero-right{display:flex;flex-direction:column;align-items:center;gap:1rem}
-.avatar-ring{width:72px;height:72px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:500;color:var(--accent);background:var(--accent2);flex-shrink:0}
 .hero-photo{width:100%;max-width:220px;aspect-ratio:3/4;border-radius:12px;border:0.5px solid var(--border2);overflow:hidden;object-fit:cover}
 .hero-card-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:var(--fs-xs);color:var(--green);background:var(--green2);border:0.5px solid rgba(62,207,142,0.2);padding:0.3rem 0.75rem;border-radius:999px;white-space:nowrap}
 .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
@@ -74,7 +118,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-size:var(--fs-base)}
 .goals-grid{display:flex;flex-direction:column;gap:0.875rem}
-.goal-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem}
+.goal-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;transition:background 0.3s}
 .goal-card h4{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem}
 .goal-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7}
 
@@ -90,7 +134,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 
 /* PROJECTS */
 .projects-list{display:flex;flex-direction:column;gap:1.25rem}
-.project-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);transition:border-color 0.2s}
+.project-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);transition:border-color 0.2s,background 0.3s}
 .project-card:hover{border-color:var(--border2)}
 .project-card.highlight{border-color:rgba(200,169,110,0.3);background:linear-gradient(135deg,var(--bg2) 0%,rgba(200,169,110,0.03) 100%)}
 .project-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.875rem;flex-wrap:wrap}
@@ -118,7 +162,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .skill-group li{font-size:var(--fs-sm);color:var(--muted);padding-left:1rem;position:relative;line-height:1.6}
 .skill-group li::before{content:'—';position:absolute;left:0;color:var(--subtle)}
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.875rem;margin-top:1rem}
-.cert-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:1rem}
+.cert-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:8px;padding:1rem;transition:background 0.3s}
 .cert-card h4{font-size:var(--fs-sm);font-weight:500;margin-bottom:0.25rem;line-height:1.4}
 .cert-card p{font-size:var(--fs-xs);color:var(--muted)}
 .competencies-wrap{margin-top:2rem}
@@ -128,7 +172,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 
 /* EVENTS */
 .events-list{display:flex;flex-direction:column;gap:1.1rem}
-.event-card{display:grid;grid-template-columns:80px 1fr;gap:1.25rem;align-items:start;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s}
+.event-card{display:grid;grid-template-columns:80px 1fr;gap:1.25rem;align-items:start;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s,background 0.3s}
 .event-card:hover{border-color:var(--border2)}
 .event-icon{width:70px;height:56px;background:var(--bg2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
 .event-type{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem}
@@ -137,7 +181,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 
 /* BLOG */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-bottom:2rem}
-.blog-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s}
+.blog-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s,background 0.3s}
 .blog-card:hover{border-color:var(--border2)}
 .blog-tag{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.65rem}
 .blog-card h3{font-size:var(--fs-base);font-weight:500;margin-bottom:0.4rem;line-height:1.5}
@@ -145,7 +189,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .blog-link{font-size:var(--fs-xs);color:var(--accent);text-decoration:none}
 .blog-link:hover{text-decoration:underline}
 .endorsements{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
-.endorse-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem)}
+.endorse-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:background 0.3s}
 .endorse-card blockquote{font-size:var(--fs-sm);color:var(--muted);line-height:1.8;font-style:italic;margin-bottom:0.875rem}
 .endorse-card cite{font-size:var(--fs-xs);color:var(--text);font-style:normal;font-weight:500}
 
@@ -178,11 +222,28 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .contact-info>p{font-size:var(--fs-base);color:var(--muted);line-height:1.8}
 .contact-link{font-size:var(--fs-base);color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;min-height:44px}
 .contact-link:hover{color:var(--accent)}
-.contact-quote{margin-top:1.25rem;padding:1.25rem;background:var(--bg3);border-left:2px solid var(--accent);border-radius:0 8px 8px 0}
+.contact-quote{margin-top:1.25rem;padding:1.25rem;background:var(--bg3);border-left:2px solid var(--accent);border-radius:0 8px 8px 0;transition:background 0.3s}
 .contact-quote p{font-size:var(--fs-sm);color:var(--muted);font-style:italic;line-height:1.8;margin-bottom:0.5rem}
 .contact-quote cite{font-size:var(--fs-xs);color:var(--accent);font-style:normal}
 
-footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--fs-xs);color:var(--subtle);border-top:0.5px solid var(--border);background:var(--bg);line-height:1.8}
+footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--fs-xs);color:var(--subtle);border-top:0.5px solid var(--border);background:var(--bg);line-height:1.8;transition:background 0.3s}
+
+/* PRINT */
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  nav,.hamburger,.mobile-menu,.hero-btns,.scroll-hint,.details-toggle,.theme-wrap{display:none!important}
+  body{background:#fff!important;color:#111!important}
+  .section-wrap,.section-wrap:nth-child(even),.section-wrap:nth-child(odd){background:#fff!important;padding:1.5rem 2rem}
+  .hero-section{background:#fff!important;min-height:auto;padding:2rem}
+  .goal-card,.cert-card,.event-card,.blog-card,.endorse-card,.project-card{background:#f8f8f8!important;border:0.5px solid #ddd!important}
+  .about-text p,.exp-body li,.details-body p,.goal-card p,.event-card p,.blog-card p,.endorse-card blockquote,.resume-section p{color:#444!important}
+  .section-eyebrow,.hero-tag,.exp-company,.event-type,.blog-tag,.goal-card h4,.skill-group h3,.resume-section h4,.project-num,.project-result,.blog-link,.contact-quote cite,.competencies-wrap h3{color:#8a6a2e!important}
+  .hero h1 em{color:#8a6a2e!important}
+  .hero-intro{border-left-color:#8a6a2e!important;color:#333!important}
+  .hero-pill,.tag,.resume-chip,.competency-chip{border-color:#ccc!important;color:#555!important}
+  .details-body{display:block!important}
+  .hero-photo{max-width:160px}
+}
 
 @media(max-width:900px){
   .nav-links{display:none}
@@ -201,6 +262,9 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   .hero-btns{flex-direction:column;align-items:flex-start}
   .btn-primary,.btn-outline{width:100%;justify-content:center}
   .resume-header{flex-direction:column}
+  .resume-btn-wrap{width:100%}
+  .resume-btn-wrap .btn-primary{width:100%;justify-content:center}
+  .theme-label{display:none}
 }
 </style>
 </head>
@@ -218,10 +282,22 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="hamburger" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <div class="theme-wrap">
+      <button class="theme-btn" onclick="toggleThemePanel()">🎨 <span class="theme-label">Theme</span> ▾</button>
+      <div class="theme-panel" id="themePanel">
+        <button class="theme-option active" onclick="setTheme('dark')"><span class="swatch" style="background:#0b0c0e;border-color:#555"></span>Dark</button>
+        <button class="theme-option" onclick="setTheme('light')"><span class="swatch" style="background:#f5f5f0;border-color:#ccc"></span>Light</button>
+        <button class="theme-option" onclick="setTheme('midnight')"><span class="swatch" style="background:#0a0f1e;border-color:#3a4a6a"></span>Midnight</button>
+        <button class="theme-option" onclick="setTheme('forest')"><span class="swatch" style="background:#0a120e;border-color:#3a5a42"></span>Forest</button>
+      </div>
+    </div>
+    <button class="hamburger" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
 <nav class="mobile-menu" id="mobileMenu">
   <a href="#home"><span class="menu-title">Home</span></a>
   <a href="#about"><span class="menu-title">About</span></a>
@@ -239,19 +315,32 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   <div class="hero-inner">
     <div>
       <h1 class="hero">Chiamaka <em>Nwaigwe.</em> <span class="hero-initials">(CNN)</span></h1>
-      <p class="hero-tag">Project Management Professional</p>
+      <p class="hero-tag">Informatics Professional</p>
       <div class="hero-pills">
         <span class="hero-pill">Health Sector</span>
         <span class="hero-pill">Education</span>
         <span class="hero-pill">Technology</span>
         <span class="hero-pill">Public Sector</span>
         <span class="hero-pill">Finance &amp; Banking</span>
-        <span class="hero-pill">Non-profit</span>
+        <span class="hero-pill">Project Manager</span>
       </div>
       <p class="hero-intro">I turn the complexity behind organisational challenges into outcomes that are structured, measurable, and built to last.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work</a>
-        <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank" class="btn-outline">Download Resume</a>
+        <div class="resume-btn-wrap">
+          <button class="btn-outline" onclick="toggleDropdown('heroResumeDD')">⬇ Download Resume ▾</button>
+          <div class="resume-dropdown" id="heroResumeDD">
+            <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank">💾 Save Resume as PDF</a>
+            <button onclick="window.print()">🖨 Print Resume</button>
+          </div>
+        </div>
+        <div class="resume-btn-wrap">
+          <button class="btn-outline" onclick="toggleDropdown('heroPortfolioDD')">🖨 Save Portfolio ▾</button>
+          <div class="resume-dropdown" id="heroPortfolioDD">
+            <button onclick="window.print()">💾 Save Portfolio as PDF</button>
+            <button onclick="window.print()">🖨 Print Portfolio</button>
+          </div>
+        </div>
         <a href="#contact" class="btn-outline">Get In Touch</a>
       </div>
       <a href="#about" class="scroll-hint">Scroll</a>
@@ -289,7 +378,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <p class="section-eyebrow">Career History</p>
     <h2 class="section-title">Work Experience</h2>
     <div class="exp-list">
-
       <div class="exp-item">
         <div class="exp-meta"><div class="exp-date">Nov 2025 – Present</div><div class="exp-company">Hamilton-Wentworth District School Board</div></div>
         <div class="exp-body"><h3>Program Coordinator &amp; Student Support Specialist</h3><ul>
@@ -300,7 +388,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <li>Collaborate with teachers, special education staff, and multidisciplinary teams to sustain a structured, student-centred support environment.</li>
         </ul></div>
       </div>
-
       <div class="exp-item">
         <div class="exp-meta"><div class="exp-date">Dec 2024 – Nov 2025</div><div class="exp-company">Sentient HR Services</div></div>
         <div class="exp-body"><h3>Behavioural Program Coordinator</h3><ul>
@@ -310,7 +397,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <li>Collaborated with clinicians, educators, and families to maintain open communication and adapt approaches as individual needs evolved.</li>
         </ul></div>
       </div>
-
       <div class="exp-item">
         <div class="exp-meta"><div class="exp-date">Jan 2020 – Oct 2024</div><div class="exp-company">Radio Nigeria 103.5 FM</div></div>
         <div class="exp-body"><h3>Broadcast Presenter</h3><ul>
@@ -318,7 +404,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <li>Managed multiple concurrent deliverables, crafting targeted messaging for diverse audience groups while keeping the end-to-end production process running smoothly.</li>
         </ul></div>
       </div>
-
       <div class="exp-item">
         <div class="exp-meta"><div class="exp-date">Jul 2017 – Jun 2022</div><div class="exp-company">Equator Computers &amp; Accessories</div></div>
         <div class="exp-body"><h3>Data Entry &amp; Administrative Specialist</h3><ul>
@@ -328,7 +413,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <li>Designed official organisational documents and produced public health awareness content for community distribution.</li>
         </ul></div>
       </div>
-
       <div class="exp-item">
         <div class="exp-meta"><div class="exp-date">Apr 2015 – May 2017</div><div class="exp-company">Onwatex Integrated Services</div></div>
         <div class="exp-body"><h3>Accounts &amp; Administrative Officer</h3><ul>
@@ -338,7 +422,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <li>Designed official organisational logos and documents, and produced public health and social awareness content for community education.</li>
         </ul></div>
       </div>
-
     </div>
   </div>
 </div>
@@ -349,7 +432,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <p class="section-eyebrow">Project Samples</p>
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects-list">
-
       <div class="project-card highlight">
         <div class="project-header"><span class="project-num">01 — Informatics Capstone · Team Lead</span><span class="highlight-badge">★ Major Highlight</span></div>
         <h3>HVALIDATE — Clinical Validation Dashboard</h3>
@@ -366,7 +448,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <p>This capstone reinforced that in healthcare IT, rigour and clarity are inseparable. Translating complex clinical data into meaningful stakeholder narratives is as important as the technical build itself.</p>
         </div>
       </div>
-
       <div class="project-card highlight">
         <div class="project-header"><span class="project-num">02 — Research &amp; Digital Strategy · Contributor</span><span class="highlight-badge">★ Major Highlight</span></div>
         <h3>Kukinpot — Digital Transformation Strategy</h3>
@@ -385,7 +466,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <p>This project reinforced that the strongest transformation strategies are built on understanding the business first. Technology is only as useful as the clarity of thinking that sits behind it.</p>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-header"><span class="project-num">03 — Program Manager · Community Initiative</span></div>
         <h3>Health on Wheels — Community Healthcare Outreach</h3>
@@ -402,7 +482,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <p>Managing a community program reinforced that operational precision and human empathy must work together. Getting the logistics right is what allows the mission to reach the people who need it most.</p>
         </div>
       </div>
-
       <div class="project-card">
         <div class="project-header"><span class="project-num">04 — Academic &amp; Professional Research · Strategy</span></div>
         <h3>PM Technology Evaluation</h3>
@@ -419,7 +498,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
           <p>This project deepened my understanding of how tool selection decisions carry downstream change management implications. The right recommendation is only as good as the adoption plan that supports it.</p>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -432,55 +510,27 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <div class="skills-outer">
       <div>
         <div class="skill-group"><h3>Project Management</h3><ul>
-          <li>Full Lifecycle Project Delivery</li>
-          <li>Agile / Lean Product Development</li>
-          <li>MVP Design &amp; Testing</li>
-          <li>Risk Identification &amp; Mitigation</li>
-          <li>Requirements Analysis</li>
-          <li>Scope Definition &amp; Documentation</li>
+          <li>Full Lifecycle Project Delivery</li><li>Agile / Lean Product Development</li><li>MVP Design &amp; Testing</li><li>Risk Identification &amp; Mitigation</li><li>Requirements Analysis</li><li>Scope Definition &amp; Documentation</li>
         </ul></div>
         <div class="skill-group"><h3>Healthcare &amp; Informatics</h3><ul>
-          <li>Health Informatics</li>
-          <li>HIPAA Compliance Awareness</li>
-          <li>PHIPA &amp; Privacy Legislation</li>
-          <li>Clinical Validation</li>
-          <li>Healthcare IT Systems</li>
+          <li>Health Informatics</li><li>HIPAA Compliance Awareness</li><li>PHIPA &amp; Privacy Legislation</li><li>Clinical Validation</li><li>Healthcare IT Systems</li>
         </ul></div>
       </div>
       <div>
         <div class="skill-group"><h3>Stakeholder &amp; Communications</h3><ul>
-          <li>Stakeholder Engagement</li>
-          <li>User Research &amp; Persona Development</li>
-          <li>Cross-cultural Communication</li>
-          <li>Executive Reporting</li>
-          <li>Change Management</li>
+          <li>Stakeholder Engagement</li><li>User Research &amp; Persona Development</li><li>Cross-cultural Communication</li><li>Executive Reporting</li><li>Change Management</li>
         </ul></div>
         <div class="skill-group"><h3>Analytics &amp; Tools</h3><ul>
-          <li>Data Visualisation &amp; KPI Reporting</li>
-          <li>Dashboard Design</li>
-          <li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li>
-          <li>Trello / Asana / Jira</li>
-          <li>Behavioural Management Systems</li>
+          <li>Data Visualisation &amp; KPI Reporting</li><li>Dashboard Design</li><li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li><li>Trello / Asana / Jira</li><li>Behavioural Management Systems</li>
         </ul></div>
       </div>
     </div>
-
     <div class="competencies-wrap">
       <h3>Core Competencies</h3>
       <div class="competency-chips">
-        <span class="competency-chip">Data Analysis</span>
-        <span class="competency-chip">Financial &amp; Account Management</span>
-        <span class="competency-chip">IEP Implementation</span>
-        <span class="competency-chip">Behaviour Intervention &amp; Support</span>
-        <span class="competency-chip">Special Needs &amp; ASD Support</span>
-        <span class="competency-chip">Interpersonal Communication</span>
-        <span class="competency-chip">Team Collaboration</span>
-        <span class="competency-chip">Time Management</span>
-        <span class="competency-chip">Documentation &amp; Reporting</span>
-        <span class="competency-chip">Differentiated Instruction</span>
+        <span class="competency-chip">Data Analysis</span><span class="competency-chip">Financial &amp; Account Management</span><span class="competency-chip">IEP Implementation</span><span class="competency-chip">Behaviour Intervention &amp; Support</span><span class="competency-chip">Special Needs &amp; ASD Support</span><span class="competency-chip">Interpersonal Communication</span><span class="competency-chip">Team Collaboration</span><span class="competency-chip">Time Management</span><span class="competency-chip">Documentation &amp; Reporting</span><span class="competency-chip">Differentiated Instruction</span>
       </div>
     </div>
-
     <div style="margin-top:2rem">
       <h3 style="font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem">Certifications &amp; Licences</h3>
       <div class="certs-grid">
@@ -491,7 +541,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <div class="cert-card"><h4>Computer Training Certificate</h4><p>Prevailing Computer Institute · 2013</p></div>
       </div>
     </div>
-
     <div style="margin-top:2rem">
       <h3 style="font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem">Leadership &amp; Community Involvement</h3>
       <div class="certs-grid">
@@ -546,8 +595,14 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <p class="section-eyebrow">Curriculum Vitae</p>
     <h2 class="section-title">My Resume</h2>
     <div class="resume-header">
-      <div><h3>Chiamaka Ngozika Nwaigwe</h3><p>Project Management Professional · Hamilton, Ontario</p></div>
-      <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank" class="btn-primary">⬇ Download PDF Resume</a>
+      <div><h3>Chiamaka Ngozika Nwaigwe</h3><p>Informatics Professional · Project Manager · Hamilton, Ontario</p></div>
+      <div class="resume-btn-wrap">
+        <button class="btn-primary" onclick="toggleDropdown('resumeSecDD')">⬇ Download Resume ▾</button>
+        <div class="resume-dropdown" id="resumeSecDD">
+          <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank">💾 Save Resume as PDF</a>
+          <button onclick="window.print()">🖨 Print Resume</button>
+        </div>
+      </div>
     </div>
     <div class="resume-contact-row">
       <a class="resume-contact-link" href="tel:+14378180859">📞 +1 (437) 818-0859</a>
@@ -562,18 +617,7 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     </div>
     <div class="resume-section"><h4>Core Skills</h4>
       <div class="resume-chips">
-        <span class="resume-chip">Full Lifecycle PM</span>
-        <span class="resume-chip">Agile / Lean</span>
-        <span class="resume-chip">Stakeholder Management</span>
-        <span class="resume-chip">Risk Management</span>
-        <span class="resume-chip">Health Informatics</span>
-        <span class="resume-chip">HIPAA / PHIPA</span>
-        <span class="resume-chip">Data Visualisation</span>
-        <span class="resume-chip">Change Management</span>
-        <span class="resume-chip">Requirements Analysis</span>
-        <span class="resume-chip">IEP Implementation</span>
-        <span class="resume-chip">Trello / Asana / Jira</span>
-        <span class="resume-chip">Microsoft Office Suite</span>
+        <span class="resume-chip">Full Lifecycle PM</span><span class="resume-chip">Agile / Lean</span><span class="resume-chip">Stakeholder Management</span><span class="resume-chip">Risk Management</span><span class="resume-chip">Health Informatics</span><span class="resume-chip">HIPAA / PHIPA</span><span class="resume-chip">Data Visualisation</span><span class="resume-chip">Change Management</span><span class="resume-chip">Requirements Analysis</span><span class="resume-chip">IEP Implementation</span><span class="resume-chip">Trello / Asana / Jira</span><span class="resume-chip">Microsoft Office Suite</span>
       </div>
     </div>
   </div>
@@ -606,7 +650,7 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<footer>© 2026 Chiamaka Ngozika Nwaigwe — Project Management Professional · Hamilton, Ontario</footer>
+<footer>© 2026 Chiamaka Ngozika Nwaigwe — Informatics Professional · Project Manager · Hamilton, Ontario</footer>
 
 <script>
 const btn = document.getElementById('menuBtn');
@@ -621,11 +665,34 @@ menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   btn.classList.remove('open');
   btn.setAttribute('aria-expanded', false);
 }));
-function toggleDetails(btn) {
-  const body = btn.nextElementSibling;
+function toggleDetails(b){
+  const body = b.nextElementSibling;
   const open = body.classList.toggle('open');
-  btn.textContent = open ? 'Details ▴' : 'Details ▾';
+  b.textContent = open ? 'Details ▴' : 'Details ▾';
 }
+function toggleDropdown(id){
+  document.querySelectorAll('.resume-dropdown').forEach(d => {
+    if(d.id !== id) d.classList.remove('open');
+  });
+  document.getElementById(id).classList.toggle('open');
+}
+function toggleThemePanel(){
+  document.getElementById('themePanel').classList.toggle('open');
+}
+function setTheme(t){
+  document.body.className = t === 'dark' ? '' : 'theme-' + t;
+  document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+  event.target.closest('.theme-option').classList.add('active');
+  document.getElementById('themePanel').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('.resume-btn-wrap')){
+    document.querySelectorAll('.resume-dropdown').forEach(d => d.classList.remove('open'));
+  }
+  if(!e.target.closest('.theme-wrap')){
+    document.getElementById('themePanel').classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
