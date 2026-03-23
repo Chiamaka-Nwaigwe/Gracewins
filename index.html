@@ -16,67 +16,40 @@
   --nav-bg:rgba(11,12,14,0.92);
   --fs-xs:0.72rem;--fs-sm:0.82rem;--fs-base:0.9rem;--fs-md:1rem;--fs-lg:1.2rem;--fs-xl:clamp(2.6rem,6vw,4.4rem);
 }
-/* LIGHT THEME */
-body.theme-light{
-  --bg:#f5f5f0;--bg2:#eeede8;--bg3:#e5e4de;
-  --text:#1a1a1a;--muted:#555550;--subtle:#999990;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);
-  --nav-bg:rgba(245,245,240,0.95);
-}
-/* MIDNIGHT THEME */
-body.theme-midnight{
-  --bg:#0a0f1e;--bg2:#0f1629;--bg3:#151d35;
-  --text:#dde4f0;--muted:#7a8aaa;--subtle:#3a4a6a;
-  --border:rgba(100,150,255,0.07);--border2:rgba(100,150,255,0.15);
-  --nav-bg:rgba(10,15,30,0.95);
-}
-/* FOREST THEME */
-body.theme-forest{
-  --bg:#0a120e;--bg2:#0f1a14;--bg3:#15231a;
-  --text:#d5e8da;--muted:#7a9a82;--subtle:#3a5a42;
-  --border:rgba(100,200,120,0.07);--border2:rgba(100,200,120,0.15);
-  --nav-bg:rgba(10,18,14,0.95);
-}
-
+body.theme-light{--bg:#f5f5f0;--bg2:#eeede8;--bg3:#e5e4de;--text:#1a1a1a;--muted:#555550;--subtle:#999990;--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.15);--nav-bg:rgba(245,245,240,0.95)}
+body.theme-midnight{--bg:#0a0f1e;--bg2:#0f1629;--bg3:#151d35;--text:#dde4f0;--muted:#7a8aaa;--subtle:#3a4a6a;--border:rgba(100,150,255,0.07);--border2:rgba(100,150,255,0.15);--nav-bg:rgba(10,15,30,0.95)}
+body.theme-forest{--bg:#0a120e;--bg2:#0f1a14;--bg3:#15231a;--text:#d5e8da;--muted:#7a9a82;--subtle:#3a5a42;--border:rgba(100,200,120,0.07);--border2:rgba(100,200,120,0.15);--nav-bg:rgba(10,18,14,0.95)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-width:320px;transition:background 0.3s,color 0.3s}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0.875rem clamp(1rem,4vw,2.5rem);background:var(--nav-bg);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--border);min-height:56px;gap:1rem}
 .nav-logo{font-size:var(--fs-base);font-weight:500;letter-spacing:0.02em;color:var(--text);text-decoration:none;white-space:nowrap}
 .nav-links{display:flex;gap:1.5rem;list-style:none;flex:1}
 .nav-links a{font-size:var(--fs-xs);color:var(--muted);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;white-space:nowrap}
 .nav-links a:hover{color:var(--accent)}
 .nav-right{display:flex;align-items:center;gap:0.5rem}
-
-/* THEME SWITCHER */
 .theme-wrap{position:relative}
-.theme-btn{background:none;border:0.5px solid var(--border2);border-radius:6px;padding:0.35rem 0.55rem;cursor:pointer;font-size:0.9rem;color:var(--muted);transition:border-color 0.2s,color 0.2s;min-height:36px;display:flex;align-items:center;gap:0.3rem}
+.theme-btn{background:none;border:0.5px solid var(--border2);border-radius:6px;padding:0.35rem 0.55rem;cursor:pointer;font-size:0.9rem;color:var(--muted);transition:border-color 0.2s,color 0.2s;min-height:36px;display:flex;align-items:center;gap:0.3rem;font-family:'Inter',sans-serif}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent)}
-.theme-label{font-size:var(--fs-xs);font-family:'Inter',sans-serif;letter-spacing:0.04em}
+.theme-label{font-size:var(--fs-xs);letter-spacing:0.04em}
 .theme-panel{display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;padding:0.5rem;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.4);min-width:160px}
 .theme-panel.open{display:block}
 .theme-option{display:flex;align-items:center;gap:0.6rem;width:100%;padding:0.5rem 0.75rem;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-size:var(--fs-sm);color:var(--muted);border-radius:4px;transition:background 0.15s,color 0.15s;text-align:left}
 .theme-option:hover{background:var(--bg2);color:var(--accent)}
 .theme-option.active{color:var(--accent)}
 .swatch{width:12px;height:12px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(255,255,255,0.2)}
-
-/* HAMBURGER */
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px;background:none;border:none;min-width:44px;min-height:44px;align-items:center}
 .hamburger span{display:block;width:22px;height:1.5px;background:var(--muted);transition:transform 0.3s,opacity 0.3s}
 .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .mobile-menu{display:none;position:sticky;top:56px;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);z-index:199;padding:0.5rem clamp(1rem,4vw,2.5rem);flex-direction:column}
-.mobile-menu a{font-family:'Inter',system-ui,sans-serif;text-decoration:none;padding:0.75rem 0;border-bottom:0.5px solid var(--border);display:flex;min-height:52px;align-items:center;transition:color 0.2s}
+.mobile-menu a{text-decoration:none;padding:0.75rem 0;border-bottom:0.5px solid var(--border);display:flex;min-height:52px;align-items:center;transition:color 0.2s}
 .mobile-menu a:last-child{border-bottom:none}
 .mobile-menu a:hover .menu-title{color:var(--accent)}
 .menu-title{font-size:var(--fs-base);color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;font-weight:500;transition:color 0.2s}
 .mobile-menu.open{display:flex}
-
-/* LAYOUT */
 .section-wrap{padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,2.5rem);transition:background 0.3s}
 .section-wrap:nth-child(even){background:var(--bg2)}
 .section-wrap:nth-child(odd){background:var(--bg)}
@@ -84,8 +57,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .section-eyebrow{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:0.5rem}
 .section-eyebrow::before{content:'';width:20px;height:1px;background:var(--accent);flex-shrink:0}
 .section-title{font-size:clamp(1.4rem,3vw,2.1rem);font-weight:400;margin-bottom:clamp(1.5rem,4vw,2.75rem);letter-spacing:-0.01em}
-
-/* HERO */
 .hero-section{min-height:100vh;display:flex;align-items:center;padding:clamp(5rem,12vw,7rem) clamp(1rem,4vw,2.5rem) clamp(2rem,5vw,4rem);background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(200,169,110,0.06) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 80%,rgba(62,207,142,0.04) 0%,transparent 60%)}
 .hero-inner{max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 260px;gap:clamp(1rem,2vw,1.5rem);align-items:center}
 .hero-tag{font-size:var(--fs-xs);color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1rem}
@@ -105,7 +76,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .resume-dropdown.open{display:block}
 .resume-dropdown a,.resume-dropdown button{display:flex;align-items:center;gap:0.5rem;width:100%;padding:0.7rem 1rem;font-size:var(--fs-sm);color:var(--muted);text-decoration:none;background:none;border:none;cursor:pointer;font-family:'Inter',system-ui,sans-serif;transition:background 0.15s,color 0.15s;text-align:left}
 .resume-dropdown a:hover,.resume-dropdown button:hover{background:var(--bg2);color:var(--accent)}
-.resume-dropdown a+a,.resume-dropdown a+button,.resume-dropdown button+a,.resume-dropdown button+button{border-top:0.5px solid var(--border)}
+.resume-dropdown a+a,.resume-dropdown a+button,.resume-dropdown button+button{border-top:0.5px solid var(--border)}
 .scroll-hint{display:flex;align-items:center;gap:0.75rem;font-size:var(--fs-xs);color:var(--subtle);text-transform:uppercase;letter-spacing:0.1em;text-decoration:none}
 .scroll-hint::after{content:'';width:32px;height:0.5px;background:var(--subtle)}
 .hero-right{display:flex;flex-direction:column;align-items:center;gap:1rem}
@@ -113,16 +84,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .hero-card-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:var(--fs-xs);color:var(--green);background:var(--green2);border:0.5px solid rgba(62,207,142,0.2);padding:0.3rem 0.75rem;border-radius:999px;white-space:nowrap}
 .pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
 .about-text p{color:var(--muted);line-height:1.9;margin-bottom:1.1rem;font-size:var(--fs-base)}
 .goals-grid{display:flex;flex-direction:column;gap:0.875rem}
 .goal-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem;transition:background 0.3s}
 .goal-card h4{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem}
 .goal-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7}
-
-/* EXPERIENCE */
 .exp-list{display:flex;flex-direction:column}
 .exp-item{display:grid;grid-template-columns:170px 1fr;gap:clamp(1rem,3vw,2rem);padding:1.75rem 0;border-bottom:0.5px solid var(--border)}
 .exp-item:first-child{border-top:0.5px solid var(--border)}
@@ -131,8 +98,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .exp-body h3{font-size:var(--fs-md);font-weight:500;margin-bottom:0.65rem}
 .exp-body ul{padding-left:1rem;display:flex;flex-direction:column;gap:0.35rem}
 .exp-body li{font-size:var(--fs-sm);color:var(--muted);line-height:1.75}
-
-/* PROJECTS */
 .projects-list{display:flex;flex-direction:column;gap:1.25rem}
 .project-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:12px;padding:clamp(1.25rem,3vw,1.75rem);transition:border-color 0.2s,background 0.3s}
 .project-card:hover{border-color:var(--border2)}
@@ -153,8 +118,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .details-body h5{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin:0.875rem 0 0.4rem}
 .details-body h5:first-child{margin-top:0}
 .details-body p{font-size:var(--fs-sm);color:var(--muted);line-height:1.75;margin-bottom:0.5rem}
-
-/* SKILLS */
 .skills-outer{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem)}
 .skill-group{margin-bottom:1.5rem}
 .skill-group h3{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.875rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border)}
@@ -169,8 +132,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .competencies-wrap h3{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem}
 .competency-chips{display:flex;flex-wrap:wrap;gap:0.4rem}
 .competency-chip{font-size:var(--fs-xs);padding:0.25rem 0.65rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:4px;color:var(--muted)}
-
-/* EVENTS */
 .events-list{display:flex;flex-direction:column;gap:1.1rem}
 .event-card{display:grid;grid-template-columns:80px 1fr;gap:1.25rem;align-items:start;background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s,background 0.3s}
 .event-card:hover{border-color:var(--border2)}
@@ -178,8 +139,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .event-type{font-size:var(--fs-xs);color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.35rem}
 .event-card h3{font-size:var(--fs-base);font-weight:500;margin-bottom:0.35rem;line-height:1.4}
 .event-card p{font-size:var(--fs-sm);color:var(--muted);line-height:1.7}
-
-/* BLOG */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem;margin-bottom:2rem}
 .blog-card{background:var(--bg2);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:border-color 0.2s,background 0.3s}
 .blog-card:hover{border-color:var(--border2)}
@@ -192,8 +151,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .endorse-card{background:var(--bg3);border:0.5px solid var(--border);border-radius:10px;padding:clamp(1rem,3vw,1.5rem);transition:background 0.3s}
 .endorse-card blockquote{font-size:var(--fs-sm);color:var(--muted);line-height:1.8;font-style:italic;margin-bottom:0.875rem}
 .endorse-card cite{font-size:var(--fs-xs);color:var(--text);font-style:normal;font-weight:500}
-
-/* RESUME */
 .resume-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
 .resume-header h3{font-size:var(--fs-lg);font-weight:500;margin-bottom:0.25rem}
 .resume-header p{font-size:var(--fs-sm);color:var(--muted)}
@@ -209,15 +166,13 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .resume-sub{font-size:var(--fs-xs);color:var(--muted);margin-bottom:0.875rem;padding-left:0.5rem}
 .resume-chips{display:flex;flex-wrap:wrap;gap:0.4rem}
 .resume-chip{font-size:var(--fs-xs);padding:0.2rem 0.55rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:4px;color:var(--muted)}
-
-/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
 .contact-form{display:flex;flex-direction:column;gap:0.875rem}
 .contact-form input,.contact-form textarea{width:100%;padding:0.75rem 1rem;background:var(--bg3);border:0.5px solid var(--border);border-radius:6px;color:var(--text);font-family:inherit;font-size:var(--fs-base);outline:none;transition:border-color 0.2s;-webkit-appearance:none;min-height:44px}
 .contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent)}
 .contact-form textarea{resize:vertical;min-height:120px}
-.contact-form button{align-self:flex-start;padding:0.75rem 1.5rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;cursor:pointer;font-family:inherit;transition:opacity 0.2s;min-height:44px}
-.contact-form button:hover{opacity:0.85}
+.contact-form button[type=submit]{align-self:flex-start;padding:0.75rem 1.5rem;background:var(--accent);color:#0b0c0e;border:none;border-radius:4px;font-size:var(--fs-sm);font-weight:500;cursor:pointer;font-family:inherit;transition:opacity 0.2s;min-height:44px}
+.contact-form button[type=submit]:hover{opacity:0.85}
 .contact-info{display:flex;flex-direction:column;gap:1rem;padding-top:0.25rem}
 .contact-info>p{font-size:var(--fs-base);color:var(--muted);line-height:1.8}
 .contact-link{font-size:var(--fs-base);color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s;min-height:44px}
@@ -225,10 +180,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between
 .contact-quote{margin-top:1.25rem;padding:1.25rem;background:var(--bg3);border-left:2px solid var(--accent);border-radius:0 8px 8px 0;transition:background 0.3s}
 .contact-quote p{font-size:var(--fs-sm);color:var(--muted);font-style:italic;line-height:1.8;margin-bottom:0.5rem}
 .contact-quote cite{font-size:var(--fs-xs);color:var(--accent);font-style:normal}
-
 footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--fs-xs);color:var(--subtle);border-top:0.5px solid var(--border);background:var(--bg);line-height:1.8;transition:background 0.3s}
-
-/* PRINT */
 @media print{
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   nav,.hamburger,.mobile-menu,.hero-btns,.scroll-hint,.details-toggle,.theme-wrap{display:none!important}
@@ -244,7 +196,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   .details-body{display:block!important}
   .hero-photo{max-width:160px}
 }
-
 @media(max-width:900px){
   .nav-links{display:none}
   .hamburger{display:flex}
@@ -263,7 +214,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   .btn-primary,.btn-outline{width:100%;justify-content:center}
   .resume-header{flex-direction:column}
   .resume-btn-wrap{width:100%}
-  .resume-btn-wrap .btn-primary{width:100%;justify-content:center}
   .theme-label{display:none}
 }
 </style>
@@ -283,13 +233,13 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <div class="theme-wrap">
-      <button class="theme-btn" onclick="toggleThemePanel()">🎨 <span class="theme-label">Theme</span> ▾</button>
+    <div class="theme-wrap" id="themeWrap">
+      <button class="theme-btn" id="themeBtn">🎨 <span class="theme-label">Theme</span> ▾</button>
       <div class="theme-panel" id="themePanel">
-        <button class="theme-option active" onclick="setTheme('dark')"><span class="swatch" style="background:#0b0c0e;border-color:#555"></span>Dark</button>
-        <button class="theme-option" onclick="setTheme('light')"><span class="swatch" style="background:#f5f5f0;border-color:#ccc"></span>Light</button>
-        <button class="theme-option" onclick="setTheme('midnight')"><span class="swatch" style="background:#0a0f1e;border-color:#3a4a6a"></span>Midnight</button>
-        <button class="theme-option" onclick="setTheme('forest')"><span class="swatch" style="background:#0a120e;border-color:#3a5a42"></span>Forest</button>
+        <button class="theme-option active" data-theme="dark"><span class="swatch" style="background:#0b0c0e;border-color:#555"></span>Dark</button>
+        <button class="theme-option" data-theme="light"><span class="swatch" style="background:#f5f5f0;border-color:#ccc"></span>Light</button>
+        <button class="theme-option" data-theme="midnight"><span class="swatch" style="background:#0a0f1e;border-color:#3a4a6a"></span>Midnight</button>
+        <button class="theme-option" data-theme="forest"><span class="swatch" style="background:#0a120e;border-color:#3a5a42"></span>Forest</button>
       </div>
     </div>
     <button class="hamburger" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
@@ -310,7 +260,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   <a href="#contact"><span class="menu-title">Contact</span></a>
 </nav>
 
-<!-- HERO -->
 <section class="hero-section" id="home">
   <div class="hero-inner">
     <div>
@@ -328,17 +277,17 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work</a>
         <div class="resume-btn-wrap">
-          <button class="btn-outline" onclick="toggleDropdown('heroResumeDD')">⬇ Download Resume ▾</button>
+          <button class="btn-outline" id="heroResumeBtn">⬇ Download Resume ▾</button>
           <div class="resume-dropdown" id="heroResumeDD">
             <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank">💾 Save Resume as PDF</a>
-            <button onclick="window.print()">🖨 Print Resume</button>
+            <button id="printResumeBtn1">🖨 Print Resume</button>
           </div>
         </div>
         <div class="resume-btn-wrap">
-          <button class="btn-outline" onclick="toggleDropdown('heroPortfolioDD')">🖨 Save Portfolio ▾</button>
+          <button class="btn-outline" id="heroPortfolioBtn">🖨 Save Portfolio ▾</button>
           <div class="resume-dropdown" id="heroPortfolioDD">
-            <button onclick="window.print()">💾 Save Portfolio as PDF</button>
-            <button onclick="window.print()">🖨 Print Portfolio</button>
+            <button id="savePortfolioBtn">💾 Save Portfolio as PDF</button>
+            <button id="printPortfolioBtn">🖨 Print Portfolio</button>
           </div>
         </div>
         <a href="#contact" class="btn-outline">Get In Touch</a>
@@ -352,7 +301,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </section>
 
-<!-- ABOUT -->
 <div class="section-wrap" id="about">
   <div class="section-inner">
     <p class="section-eyebrow">Biography</p>
@@ -372,7 +320,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<!-- EXPERIENCE -->
 <div class="section-wrap" id="experience">
   <div class="section-inner">
     <p class="section-eyebrow">Career History</p>
@@ -426,7 +373,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<!-- PROJECTS -->
 <div class="section-wrap" id="projects">
   <div class="section-inner">
     <p class="section-eyebrow">Project Samples</p>
@@ -438,14 +384,11 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <p>Led the full design and implementation of a clinical validation dashboard for a HIPAA and PHIPA compliant platform targeting presenteeism in healthcare. The platform aggregated usage and feedback data to communicate ROI and real-world product impact to key stakeholders, validating clinical claims through data-driven evidence.</p>
         <div class="tag-row"><span class="tag">Project Management</span><span class="tag">Healthcare IT</span><span class="tag">Data Visualisation</span><span class="tag">Stakeholder Engagement</span><span class="tag">HIPAA &amp; PHIPA Compliance</span><span class="tag">Clinical Validation</span></div>
         <p class="project-result">End-to-end clinical validation dashboard delivered, demonstrating measurable ROI and real-world product impact to key stakeholders</p>
-        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <button class="details-toggle">Details ▾</button>
         <div class="details-body">
-          <h5>Project Scope</h5>
-          <p>Managed the complete project lifecycle from requirements gathering through to dashboard implementation and stakeholder presentation. Coordinated cross-functional input to ensure the platform met both clinical and business objectives.</p>
-          <h5>Key Skills Demonstrated</h5>
-          <p>Project lifecycle management, data visualisation, HIPAA and PHIPA compliance awareness, stakeholder engagement, requirements analysis, and evidence-based reporting.</p>
-          <h5>Reflection</h5>
-          <p>This capstone reinforced that in healthcare IT, rigour and clarity are inseparable. Translating complex clinical data into meaningful stakeholder narratives is as important as the technical build itself.</p>
+          <h5>Project Scope</h5><p>Managed the complete project lifecycle from requirements gathering through to dashboard implementation and stakeholder presentation. Coordinated cross-functional input to ensure the platform met both clinical and business objectives.</p>
+          <h5>Key Skills Demonstrated</h5><p>Project lifecycle management, data visualisation, HIPAA and PHIPA compliance awareness, stakeholder engagement, requirements analysis, and evidence-based reporting.</p>
+          <h5>Reflection</h5><p>This capstone reinforced that in healthcare IT, rigour and clarity are inseparable. Translating complex clinical data into meaningful stakeholder narratives is as important as the technical build itself.</p>
         </div>
       </div>
       <div class="project-card highlight">
@@ -454,16 +397,12 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <p>Kukinpot is a growing restaurant that had built a loyal customer base but was held back by outdated communication methods and limited digital presence. Without online ordering, a structured management system, or a visible web presence, the business was losing ground to digitally enabled competitors.</p>
         <div class="tag-row"><span class="tag">Digital Transformation</span><span class="tag">Gap Analysis</span><span class="tag">Technology Evaluation</span><span class="tag">Competitive Benchmarking</span><span class="tag">Change Management</span><span class="tag">Roadmap Design</span></div>
         <p class="project-result">Prioritised digital transformation roadmap delivered, covering POS, inventory, CRM, and online ordering, giving Kukinpot a clear, realistic path to modernise operations</p>
-        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <button class="details-toggle">Details ▾</button>
         <div class="details-body">
-          <h5>Problem</h5>
-          <p>Kukinpot lacked online ordering, a structured management system, and a meaningful web presence — losing competitive ground to rivals like Papaye and Chop Shop who already operated online ordering platforms, delivery integrations, and active social media channels.</p>
-          <h5>Approach</h5>
-          <p>Conducted a structured digital assessment to identify key operational gaps affecting customer engagement and order coordination. Benchmarked Kukinpot's current state against established competitors and developed targeted technology recommendations grounded in business need, not just technical possibility.</p>
-          <h5>Outcome</h5>
-          <p>Delivered a clear, prioritised roadmap covering point-of-sale systems, inventory tracking, customer relationship management, and an online ordering platform — each recommendation tied to measurable operational improvement.</p>
-          <h5>Reflection</h5>
-          <p>This project reinforced that the strongest transformation strategies are built on understanding the business first. Technology is only as useful as the clarity of thinking that sits behind it.</p>
+          <h5>Problem</h5><p>Kukinpot lacked online ordering, a structured management system, and a meaningful web presence — losing competitive ground to rivals like Papaye and Chop Shop who already operated online ordering platforms, delivery integrations, and active social media channels.</p>
+          <h5>Approach</h5><p>Conducted a structured digital assessment to identify key operational gaps affecting customer engagement and order coordination. Benchmarked Kukinpot's current state against established competitors and developed targeted technology recommendations grounded in business need, not just technical possibility.</p>
+          <h5>Outcome</h5><p>Delivered a clear, prioritised roadmap covering point-of-sale systems, inventory tracking, customer relationship management, and an online ordering platform — each recommendation tied to measurable operational improvement.</p>
+          <h5>Reflection</h5><p>This project reinforced that the strongest transformation strategies are built on understanding the business first. Technology is only as useful as the clarity of thinking that sits behind it.</p>
         </div>
       </div>
       <div class="project-card">
@@ -472,14 +411,11 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <p>Managed a mobile community healthcare outreach program designed to improve health service access for underserved populations. Oversaw logistics, resource allocation, stakeholder partnerships, and milestone tracking from planning through execution, delivering measurable community impact.</p>
         <div class="tag-row"><span class="tag">Program Coordination</span><span class="tag">Community Engagement</span><span class="tag">Resource Planning</span><span class="tag">Impact Reporting</span></div>
         <p class="project-result">Program executed end-to-end with measurable improvements in health service access for underserved communities</p>
-        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <button class="details-toggle">Details ▾</button>
         <div class="details-body">
-          <h5>Program Overview</h5>
-          <p>Coordinated a mobile outreach initiative spanning logistics management, partner stakeholder alignment, and community communications — ensuring consistent service delivery across all program milestones.</p>
-          <h5>Key Skills Demonstrated</h5>
-          <p>Program coordination, resource planning, stakeholder partnerships, community engagement, milestone tracking, and impact reporting.</p>
-          <h5>Reflection</h5>
-          <p>Managing a community program reinforced that operational precision and human empathy must work together. Getting the logistics right is what allows the mission to reach the people who need it most.</p>
+          <h5>Program Overview</h5><p>Coordinated a mobile outreach initiative spanning logistics management, partner stakeholder alignment, and community communications — ensuring consistent service delivery across all program milestones.</p>
+          <h5>Key Skills Demonstrated</h5><p>Program coordination, resource planning, stakeholder partnerships, community engagement, milestone tracking, and impact reporting.</p>
+          <h5>Reflection</h5><p>Managing a community program reinforced that operational precision and human empathy must work together. Getting the logistics right is what allows the mission to reach the people who need it most.</p>
         </div>
       </div>
       <div class="project-card">
@@ -488,41 +424,29 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
         <p>Conducted a structured evaluation of leading project management tools and platforms, benchmarking against organisational criteria. Developed scoring matrices, comparative analysis reports, and presented technology adoption recommendations with change management and integration roadmaps.</p>
         <div class="tag-row"><span class="tag">Technology Evaluation</span><span class="tag">Research &amp; Analysis</span><span class="tag">Change Management</span><span class="tag">Stakeholder Presentation</span></div>
         <p class="project-result">Comprehensive technology adoption recommendations delivered with full change management and integration roadmaps</p>
-        <button class="details-toggle" onclick="toggleDetails(this)">Details ▾</button>
+        <button class="details-toggle">Details ▾</button>
         <div class="details-body">
-          <h5>Methodology</h5>
-          <p>Applied structured evaluation frameworks to benchmark PM tools against defined organisational criteria. Produced scoring matrices and comparative reports to support evidence-based decision making.</p>
-          <h5>Key Skills Demonstrated</h5>
-          <p>Technology evaluation, gap analysis, change management planning, stakeholder presentation, research synthesis, and strategic recommendation writing.</p>
-          <h5>Reflection</h5>
-          <p>This project deepened my understanding of how tool selection decisions carry downstream change management implications. The right recommendation is only as good as the adoption plan that supports it.</p>
+          <h5>Methodology</h5><p>Applied structured evaluation frameworks to benchmark PM tools against defined organisational criteria. Produced scoring matrices and comparative reports to support evidence-based decision making.</p>
+          <h5>Key Skills Demonstrated</h5><p>Technology evaluation, gap analysis, change management planning, stakeholder presentation, research synthesis, and strategic recommendation writing.</p>
+          <h5>Reflection</h5><p>This project deepened my understanding of how tool selection decisions carry downstream change management implications. The right recommendation is only as good as the adoption plan that supports it.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SKILLS -->
 <div class="section-wrap" id="skills">
   <div class="section-inner">
     <p class="section-eyebrow">Expertise</p>
     <h2 class="section-title">Skills &amp; Achievements</h2>
     <div class="skills-outer">
       <div>
-        <div class="skill-group"><h3>Project Management</h3><ul>
-          <li>Full Lifecycle Project Delivery</li><li>Agile / Lean Product Development</li><li>MVP Design &amp; Testing</li><li>Risk Identification &amp; Mitigation</li><li>Requirements Analysis</li><li>Scope Definition &amp; Documentation</li>
-        </ul></div>
-        <div class="skill-group"><h3>Healthcare &amp; Informatics</h3><ul>
-          <li>Health Informatics</li><li>HIPAA Compliance Awareness</li><li>PHIPA &amp; Privacy Legislation</li><li>Clinical Validation</li><li>Healthcare IT Systems</li>
-        </ul></div>
+        <div class="skill-group"><h3>Project Management</h3><ul><li>Full Lifecycle Project Delivery</li><li>Agile / Lean Product Development</li><li>MVP Design &amp; Testing</li><li>Risk Identification &amp; Mitigation</li><li>Requirements Analysis</li><li>Scope Definition &amp; Documentation</li></ul></div>
+        <div class="skill-group"><h3>Healthcare &amp; Informatics</h3><ul><li>Health Informatics</li><li>HIPAA Compliance Awareness</li><li>PHIPA &amp; Privacy Legislation</li><li>Clinical Validation</li><li>Healthcare IT Systems</li></ul></div>
       </div>
       <div>
-        <div class="skill-group"><h3>Stakeholder &amp; Communications</h3><ul>
-          <li>Stakeholder Engagement</li><li>User Research &amp; Persona Development</li><li>Cross-cultural Communication</li><li>Executive Reporting</li><li>Change Management</li>
-        </ul></div>
-        <div class="skill-group"><h3>Analytics &amp; Tools</h3><ul>
-          <li>Data Visualisation &amp; KPI Reporting</li><li>Dashboard Design</li><li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li><li>Trello / Asana / Jira</li><li>Behavioural Management Systems</li>
-        </ul></div>
+        <div class="skill-group"><h3>Stakeholder &amp; Communications</h3><ul><li>Stakeholder Engagement</li><li>User Research &amp; Persona Development</li><li>Cross-cultural Communication</li><li>Executive Reporting</li><li>Change Management</li></ul></div>
+        <div class="skill-group"><h3>Analytics &amp; Tools</h3><ul><li>Data Visualisation &amp; KPI Reporting</li><li>Dashboard Design</li><li>Microsoft Office Suite (Word, Excel, PowerPoint, Outlook)</li><li>Trello / Asana / Jira</li><li>Behavioural Management Systems</li></ul></div>
       </div>
     </div>
     <div class="competencies-wrap">
@@ -551,29 +475,18 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<!-- EVENTS -->
 <div class="section-wrap" id="events">
   <div class="section-inner">
     <p class="section-eyebrow">Community &amp; Learning</p>
     <h2 class="section-title">Events &amp; Community</h2>
     <div class="events-list">
-      <div class="event-card">
-        <div class="event-icon">🏥</div>
-        <div><p class="event-type">Conference — Attendee</p><h3>Health Informatics &amp; Digital Health Forum</h3><p>Engaged with emerging themes in healthcare IT, digital transformation, and data governance — including the application of informatics tools to improve patient outcomes and operational efficiency across healthcare organisations.</p></div>
-      </div>
-      <div class="event-card">
-        <div class="event-icon">🤝</div>
-        <div><p class="event-type">Community — Active Member</p><h3>PMI Hamilton / Toronto Chapter — Networking</h3><p>Active participant in PMI chapter events focused on professional development, knowledge sharing, and networking for project management professionals across Ontario.</p></div>
-      </div>
-      <div class="event-card">
-        <div class="event-icon">🎤</div>
-        <div><p class="event-type">Workshop — Participant</p><h3>Women in Healthcare Leadership</h3><p>Participated in professional development workshops focused on leadership, communication, and career navigation for women in healthcare, informatics, and project management roles.</p></div>
-      </div>
+      <div class="event-card"><div class="event-icon">🏥</div><div><p class="event-type">Conference — Attendee</p><h3>Health Informatics &amp; Digital Health Forum</h3><p>Engaged with emerging themes in healthcare IT, digital transformation, and data governance — including the application of informatics tools to improve patient outcomes and operational efficiency across healthcare organisations.</p></div></div>
+      <div class="event-card"><div class="event-icon">🤝</div><div><p class="event-type">Community — Active Member</p><h3>PMI Hamilton / Toronto Chapter — Networking</h3><p>Active participant in PMI chapter events focused on professional development, knowledge sharing, and networking for project management professionals across Ontario.</p></div></div>
+      <div class="event-card"><div class="event-icon">🎤</div><div><p class="event-type">Workshop — Participant</p><h3>Women in Healthcare Leadership</h3><p>Participated in professional development workshops focused on leadership, communication, and career navigation for women in healthcare, informatics, and project management roles.</p></div></div>
     </div>
   </div>
 </div>
 
-<!-- BLOG -->
 <div class="section-wrap" id="blog">
   <div class="section-inner">
     <p class="section-eyebrow">Thought Leadership</p>
@@ -589,7 +502,6 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<!-- RESUME -->
 <div class="section-wrap" id="resume">
   <div class="section-inner">
     <p class="section-eyebrow">Curriculum Vitae</p>
@@ -597,10 +509,10 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
     <div class="resume-header">
       <div><h3>Chiamaka Ngozika Nwaigwe</h3><p>Informatics Professional · Project Manager · Hamilton, Ontario</p></div>
       <div class="resume-btn-wrap">
-        <button class="btn-primary" onclick="toggleDropdown('resumeSecDD')">⬇ Download Resume ▾</button>
-        <div class="resume-dropdown" id="resumeSecDD">
+        <button class="btn-primary" id="secResumeBtn">⬇ Download Resume ▾</button>
+        <div class="resume-dropdown" id="secResumeDD">
           <a href="https://drive.google.com/uc?export=download&id=1QW20gO6y0UWAl6cEeiGMMdNTgyp0xBwA" target="_blank">💾 Save Resume as PDF</a>
-          <button onclick="window.print()">🖨 Print Resume</button>
+          <button id="printResumeBtn2">🖨 Print Resume</button>
         </div>
       </div>
     </div>
@@ -623,19 +535,19 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
   </div>
 </div>
 
-<!-- CONTACT -->
 <div class="section-wrap" id="contact">
   <div class="section-inner">
     <p class="section-eyebrow">Get In Touch</p>
     <h2 class="section-title">Let's Work Together</h2>
     <div class="contact-grid">
-      <div class="contact-form">
-        <input type="text" placeholder="Your name" autocomplete="name" />
-        <input type="email" placeholder="Email address" autocomplete="email" />
-        <input type="text" placeholder="Subject" />
-        <textarea placeholder="Your message"></textarea>
-        <button type="button">Send message</button>
-      </div>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mlgpyljk" method="POST">
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
+        <input type="text" name="subject" placeholder="Subject" required />
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit" id="submitBtn">Send message</button>
+        <p id="formMsg" style="display:none;font-size:var(--fs-sm);margin-top:0.5rem"></p>
+      </form>
       <div class="contact-info">
         <p>Open to project management and health informatics opportunities across Canada. Let's connect.</p>
         <a class="contact-link" href="mailto:chingoscarce@gmail.com">✉ chingoscarce@gmail.com</a>
@@ -653,46 +565,105 @@ footer{text-align:center;padding:1.75rem clamp(1rem,4vw,2.5rem);font-size:var(--
 <footer>© 2026 Chiamaka Ngozika Nwaigwe — Informatics Professional · Project Manager · Hamilton, Ontario</footer>
 
 <script>
-const btn = document.getElementById('menuBtn');
-const menu = document.getElementById('mobileMenu');
-btn.addEventListener('click', () => {
-  const open = menu.classList.toggle('open');
-  btn.classList.toggle('open', open);
-  btn.setAttribute('aria-expanded', open);
-});
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  menu.classList.remove('open');
-  btn.classList.remove('open');
-  btn.setAttribute('aria-expanded', false);
-}));
-function toggleDetails(b){
-  const body = b.nextElementSibling;
-  const open = body.classList.toggle('open');
-  b.textContent = open ? 'Details ▴' : 'Details ▾';
-}
-function toggleDropdown(id){
-  document.querySelectorAll('.resume-dropdown').forEach(d => {
-    if(d.id !== id) d.classList.remove('open');
+(function(){
+  // Hamburger
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open);
   });
-  document.getElementById(id).classList.toggle('open');
-}
-function toggleThemePanel(){
-  document.getElementById('themePanel').classList.toggle('open');
-}
-function setTheme(t){
-  document.body.className = t === 'dark' ? '' : 'theme-' + t;
-  document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
-  event.target.closest('.theme-option').classList.add('active');
-  document.getElementById('themePanel').classList.remove('open');
-}
-document.addEventListener('click', e => {
-  if(!e.target.closest('.resume-btn-wrap')){
-    document.querySelectorAll('.resume-dropdown').forEach(d => d.classList.remove('open'));
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Details toggles
+  document.querySelectorAll('.details-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var body = btn.nextElementSibling;
+      var open = body.classList.toggle('open');
+      btn.textContent = open ? 'Details ▴' : 'Details ▾';
+    });
+  });
+
+  // Resume dropdowns
+  function toggleDD(id){
+    document.querySelectorAll('.resume-dropdown').forEach(function(d){
+      if(d.id !== id) d.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
   }
-  if(!e.target.closest('.theme-wrap')){
-    document.getElementById('themePanel').classList.remove('open');
-  }
-});
+  document.getElementById('heroResumeBtn').addEventListener('click', function(){ toggleDD('heroResumeDD'); });
+  document.getElementById('heroPortfolioBtn').addEventListener('click', function(){ toggleDD('heroPortfolioDD'); });
+  document.getElementById('secResumeBtn').addEventListener('click', function(){ toggleDD('secResumeDD'); });
+
+  // Print buttons
+  document.getElementById('printResumeBtn1').addEventListener('click', function(){ window.print(); });
+  document.getElementById('printResumeBtn2').addEventListener('click', function(){ window.print(); });
+  document.getElementById('savePortfolioBtn').addEventListener('click', function(){ window.print(); });
+  document.getElementById('printPortfolioBtn').addEventListener('click', function(){ window.print(); });
+
+  // Theme switcher
+  var themeBtn = document.getElementById('themeBtn');
+  var themePanel = document.getElementById('themePanel');
+  themeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    themePanel.classList.toggle('open');
+  });
+  document.querySelectorAll('.theme-option').forEach(function(opt){
+    opt.addEventListener('click', function(){
+      var t = opt.getAttribute('data-theme');
+      document.body.className = t === 'dark' ? '' : 'theme-' + t;
+      document.querySelectorAll('.theme-option').forEach(function(o){ o.classList.remove('active'); });
+      opt.classList.add('active');
+      themePanel.classList.remove('open');
+    });
+  });
+
+  // Close all panels on outside click
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.resume-btn-wrap')){
+      document.querySelectorAll('.resume-dropdown').forEach(function(d){ d.classList.remove('open'); });
+    }
+    if(!e.target.closest('.theme-wrap')){
+      themePanel.classList.remove('open');
+    }
+  });
+
+  // Contact form
+  var contactForm = document.getElementById('contactForm');
+  var formMsg = document.getElementById('formMsg');
+  var submitBtn = document.getElementById('submitBtn');
+  contactForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    try {
+      var res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: {'Accept': 'application/json'}
+      });
+      if(res.ok){
+        formMsg.style.display = 'block';
+        formMsg.style.color = 'var(--green)';
+        formMsg.textContent = '✓ Message sent! I will get back to you soon.';
+        contactForm.reset();
+      } else { throw new Error(); }
+    } catch(err){
+      formMsg.style.display = 'block';
+      formMsg.style.color = '#e06c6c';
+      formMsg.textContent = '✗ Something went wrong. Please email me at chingoscarce@gmail.com';
+    }
+    submitBtn.textContent = 'Send message';
+    submitBtn.disabled = false;
+  });
+})();
 </script>
 </body>
 </html>
